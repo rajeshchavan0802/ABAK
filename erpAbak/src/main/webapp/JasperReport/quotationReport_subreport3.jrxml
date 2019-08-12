@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="quotationReport_subreport3" language="groovy" pageWidth="576" pageHeight="802" columnWidth="576" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9ed12990-eb6e-4ca7-96ed-9882f9818578">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<detail>
+		<band height="285" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="13" uuid="087452eb-297f-4f7f-9421-745584943229"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Terms & Conditions:- ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="22" width="100" height="13" uuid="a353bf68-688d-4169-a3f3-636cab38ba95"/>
+				<text><![CDATA[Taxes & Duties]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="35" width="100" height="13" uuid="9e51fe39-3588-4196-a019-fb8701c3d12b"/>
+				<text><![CDATA[Delivery ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="61" width="100" height="13" uuid="048cbce7-e538-4836-bbc2-1fa80e18d4d3"/>
+				<text><![CDATA[Payment Terms]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="74" width="100" height="28" uuid="c4464250-1da8-42d9-926a-761e9c67ff26"/>
+				<text><![CDATA[Freight, Insurance, & Unloading]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="22" width="453" height="13" uuid="5ce8846f-d6f9-4218-8cd4-8cd00fa5aa9b"/>
+				<text><![CDATA[: GST @ 18% will be charged extra AT ACTUAL. (HSN CODE – 85371000). ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="35" width="453" height="26" uuid="0ab54f93-4ff8-428c-a533-021f8c63a3f7"/>
+				<text><![CDATA[: 3-4 BUSINESS WEEKS from the date of drawing approval and drawing will be submit within 4-5 days from the date of receiving purchase order & receipt of Advance if applicable. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="60" width="453" height="13" uuid="88ccc436-0dbf-44c9-8ff4-d8a1c414c53d"/>
+				<text><![CDATA[: Testing at our works, only routine test will be offered for inspection. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="74" width="453" height="28" uuid="68b626dd-8f3a-4f8d-8196-9d594dfd6a51"/>
+				<text><![CDATA[: To purchaser’s scope. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="102" width="100" height="14" uuid="6f18ba0b-104b-4954-9a1c-8b8226b390aa"/>
+				<text><![CDATA[Packing & Forwarding]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="102" width="453" height="14" uuid="0920efc8-887f-4a20-905d-050a6142b5ce"/>
+				<text><![CDATA[: Inclusive for polythene packing, if wooden packing required charges will be Extra. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="116" width="100" height="13" uuid="5bccd818-164f-41fc-bad7-f82fad2b4163"/>
+				<text><![CDATA[Validity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="116" width="453" height="13" uuid="ee27f74a-ae17-4bc5-83ef-80d61a39b384"/>
+				<text><![CDATA[: Our offer is valid for 30 days from the date mentioned hereof. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="129" width="100" height="15" uuid="f786a471-67cf-44fc-bcbc-7057ea87f147"/>
+				<text><![CDATA[Warranty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="129" width="453" height="27" uuid="afee6394-3dbc-474a-888f-e38708829243"/>
+				<text><![CDATA[: Our Panels are warranted for satisfactory performance against manufacturing defects for a period of 12 months from the date of final inspection call. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="168" width="519" height="29" uuid="fec3394f-b84e-44ad-bb97-d23478be1e61"/>
+				<text><![CDATA[                       We hope our offer and terms and conditions suit your requirements. If you require any Clarification please call on us. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="197" width="216" height="41" uuid="96267d74-e396-490f-a5cf-25dd6d28f311"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Thanking you,
+Yours faithfully,
+For, ABAK ELECTROFAB ENGG.PVT.LTD.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="244" width="213" height="39" uuid="a5cb09f0-d13f-47c8-84d6-a2379adda78b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOHAMMED KHALID
+mkhalid@abakengg.com
+9930914687
+ENCL – DETAIL BILL OF MATERIAL.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

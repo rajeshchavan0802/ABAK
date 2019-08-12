@@ -1,0 +1,139 @@
+	<script>
+
+		$( "#handledById" ).change(function() {
+
+			$("#handledByName").val($("#handledById option:selected").text());
+			});
+		
+		$( "#estimatorUserId" ).change(function() {
+			$("#estimatorUserName").val($("#estimatorUserId option:selected").text());
+			});
+
+	</script>
+
+
+</head> 
+<body>
+	
+	<div class="main-content">
+	<div id="header"></div>
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="header_bottom">
+			<h2>New Sales order</h2>
+			<div class="text-right">
+				<ol class="breadcrumbs">
+					<li><a href="#"><span>Home&nbsp; / </span></a></li>
+					<li><span>&nbsp;New Sales order</span></li>
+				</ol>
+			</div>
+			</div>
+		
+		
+		 
+	<form id="projectDetailsSave" action=""  method="post">
+	<table id="mainSalesMsg"><tbody></tbody></table>
+
+	<input type="hidden" name="handledByName" id="handledByName"/>
+	<input type="hidden" name="estimatorUserName" id="estimatorUserName"/>
+
+	<div id="project_mainbox1">
+	
+	<div class="project_box">
+    	<div class="project_box2"><h2>Project Name</h2> </div>
+        <div class="project_box3"><input type="text" id="projectName" name="projectName"/></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Enquiry Number</h2> </div>
+        <div class="project_box3"><input type="text" id="enquiryNumber" name="enquiryNumber" /></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Enquiry Rev Date</h2> </div>
+        <div class="project_box3"><input type="date" id="enquiryRecDate" name="enquiryRecDate" /></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Customer</h2> </div>
+        <div class="project_box3">
+        
+        	<select id="customerId" name="customerId">
+							<option value="0"> select Customer</option>
+							<#if clientList??>
+								<#list clientList as item>
+									<#if item?has_content && item.clientName?has_content && item.id?has_content>
+										<option value=${item.id}>${item.clientName}</option>
+										</#if> 
+										</#list>
+									<#else>
+							<p>Empty</p>
+						</#if>		
+			</select>
+			
+        </div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Handle By</h2> </div>
+        <div class="project_box3">
+
+		<select id="handledById" name="handledById" >
+							<option value="0"> select Handle by</option>
+							<#if userList??>
+								<#list userList as item>
+									<#if item?has_content && item.firstName?has_content && item.id?has_content>
+										<option value=${item.id}>${item.firstName} ${item.lastName}</option>
+										</#if> 
+										</#list>
+									<#else>
+							<p>Empty</p>
+						</#if>
+		</select>
+
+		</div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Estimator</h2> </div>
+        <div class="project_box3">
+		
+		<select id="estimatorUserId" name="estimatorUserId">
+							<option value="0"> select Estimator</option>
+							<#if userList??>
+								<#list userList as item>
+									<#if item?has_content && item.firstName?has_content && item.id?has_content>
+										<option value=${item.id}>${item.firstName} ${item.lastName}</option>
+										</#if> 
+										</#list>
+									<#else>
+							<p>Empty</p>
+						</#if>	
+		</select>
+		
+		</div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Project Details</h2> </div>
+        <div class="project_box3"><textarea id="projectDetails" name="projectDetails" rows="2" cols="30"></textarea></div>
+    </div>
+	
+	
+	<div class="project_box4">
+    <div class="button"> 
+    	<input type="button" value="Save" onClick="addSalesDetails()">
+        <input type="button" value="Cancel" >
+     </div>
+    </div>
+	
+	</div>
+		
+	</form>	
+  
+	</div>  <!--page-wrapper-->
+	</div>
+		    
+
+
+</body> 

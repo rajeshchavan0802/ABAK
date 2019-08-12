@@ -1,0 +1,113 @@
+ <script>
+        function clearEnquiry(){
+            $("#enquiryNumber").val('');
+            $("#projectName").val('');
+            
+            var sourceDropdown='<option value="0">Please click on search </option>';
+            var targetDropdown='<option value="0">Please click on search </option>';
+            $("#sourceProjectName").html('');
+            $("#destinationProjectName").html('');
+            $("#sourceProjectName").append(sourceDropdown);
+            $("#destinationProjectName").append(targetDropdown);
+        }
+
+
+
+</script>
+ 	
+
+<body>
+	
+	<div class="main-content">
+	<div id="header"></div>
+	
+	
+	
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="header_bottom">
+				<h2>Estimation Cloning</h2>
+				<div class="text-right">
+					<ol class="breadcrumbs">
+						<li><a href="#"><span>Home&nbsp; / </span></a></li>
+						<li><span>&nbsp;Estimation Cloning</span></li>
+					</ol>
+				</div>
+			</div>
+
+
+
+			<form id="estimationClone" action="" method="post">
+
+				<div id="project_mainbox1">
+
+					<div class="project_box">
+						<div class="project_box2">
+							<h2>Enquiry Number</h2>
+						</div>
+						<div class="project_box3">
+							<input type="text" id="enquiryNumber" name="enquiryNumber" />
+						</div>
+					</div>
+					
+					
+					<div class="project_box">
+						<div class="project_box2">
+							<h2>Project Name</h2>
+						</div>
+						<div class="project_box3">
+							<input type="text" id="projectName" name="projectName" />
+						</div>
+					</div>
+					
+					
+					
+
+
+					<div class="project_box4">
+						<div class="button">
+							<input type="button" value="Search" onclick="searchEstimationForClone()"/>
+							<input type="button" value="clear" onclick="clearEnquiry()"/>
+						</div>
+					</div>
+					<br><br><br><br><br><br><br><br> 
+					<div class="project_box">
+    					<div class="project_box2"><h2>Existing project with estimation</h2> </div>
+						<div class="project_box3">
+			        		<select id="sourceProjectName" >
+			        			<option value="0"> Please click on search</option>
+	        				</select>
+        				</div>
+        			</div>
+        			
+        			<div class="project_box">
+    					<div class="project_box2"><h2>Target project</h2> </div>
+						<div class="project_box3">
+			        		<select id="destinationProjectName" >
+			        			<option value="0"> Please click on search</option>
+	        				</select>
+        				</div>
+        			</div>
+        			
+        			
+        			<div class="project_box4">
+						<div class="button">
+							<input type="button" value="clone" onclick="doEstimationCloning()" />
+						</div>
+					</div>
+        			
+
+				</div>
+
+			</form>
+
+
+
+		</div>
+
+
+	</div>
+		    
+
+
+</body> 

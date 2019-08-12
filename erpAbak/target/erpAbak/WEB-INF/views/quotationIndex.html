@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script type="text/javascript" src="js/quotation.js"></script>
+<title>ERP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Custom CSS -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' /> 
+	<script src="js/SidebarNav.min.js" type="text/javascript"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.semanticui.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
+ 
+ 
+
+	<script type="text/javascript">
+	
+			$(document).ready(function() {
+				alert("quotationIndex");
+		    	$('#estimationTable').DataTable();
+			} );
+			
+	</script>
+	
+</head> 
+<body>
+	
+	<div class="main-content">
+	<div id="header"></div>
+		 
+		<div id="page-wrapper">
+
+			<div class="header_bottom">
+				<h2>Quotation</h2>
+
+				<div class="text-right">
+					<ol class="breadcrumbs">
+						<li><a href="#"><span>Home&nbsp; / </span></a></li>
+						<li><span>&nbsp;Quotation</span></li>
+					</ol>
+				</div>
+			</div>
+
+			<div id="project_mainbox3">
+    	
+		    	<table width="200" border="1" id="quotationLandingTbl">
+				  <tr>
+				    <th scope="col" width="10%" >Sr no.</th>
+				    <th scope="col" width="20%">Project Name</th>
+				    <th scope="col" width="20%">Customer Name</th>
+				    <th scope="col" width="20%">Enquiry Number</th>
+				    <th scope="col" width="10%">View</th>
+				    <th scope="col" width="10%">Generate</th>
+				    <th scope="col" width="10%">Send to client</th>
+				  </tr>
+
+					<#if gridlist??>
+	        			<#list gridlist as project>
+	         
+			  			<tr>
+			                <td>${project?index+1}</td>
+			                <td>${(project.projectName)!""}</td>
+			                <td>${(project.customerName)!""}</td>
+			                <td>${(project.enquiryNumber)!""}</td>
+			                 
+			                <td>
+			                	 <#if  project.isQuotationPresent>
+			                	 <button type="button">View</button> 
+			                	 </#if>
+			                </td> 
+			                
+			                <td>
+			                	 <#if  !project.isQuotationPresent >
+			                	 <button type="button" onclick="getQuotationPopUp(${project.projectId})">Generate</button> 
+			                	 </#if>
+			                </td>
+			                
+			                <td>
+			                	 <#if project.isQuotationPresent >
+			                	 <button type="button">Send to client</button>
+			               		 </#if>
+			                </td>
+			                
+			            </tr>
+	            
+	            		</#list>
+	       			</#if>   
+		 		</table>
+		 </div>
+         
+         <div id="tempQuotationPopUp"></div>
+         
+  
+	</div> 
+	</div>
+ 
+
+
+</body>
+
+
+ 
+</html>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:beans="http://www.springframework.org/schema/beans"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:tx="http://www.springframework.org/schema/tx"
+ xsi:schemaLocation="http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+ http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+ http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+ 
+ <!-- Enables the Spring MVC @Controller programming model -->
+ <annotation-driven />
+
+ <context:component-scan base-package="com.abak"/>
+ 
+ <resources mapping="/**" location="/" />
+ 
+	 
+		 <beans:bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		 	<beans:property name="templateLoaderPath" value="/WEB-INF/views/"/>
+		 </beans:bean>
+		 
+
+		<beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+	    <beans:bean id="fileSystemResourceLoader" class="org.springframework.core.io.FileSystemResourceLoader"/>  
+		<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+			<beans:property name="basenames">
+	
+				<beans:list> 
+				<beans:value>file:///${filepathxml}abak.properties</beans:value>
+				<beans:value>classpath:abak.properties</beans:value>
+				</beans:list>
+			</beans:property>
+			
+		</beans:bean>
+			    
+ 
+ 
+ 
+		 <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+			 <beans:property name="cache" value="true"/>
+			 <beans:property name="requestContextAttribute" value="rc"></beans:property>
+			 <beans:property name="prefix" value=""/>
+			 <beans:property name="suffix" value=".html"/>
+		 </beans:bean>
+ 
+
+ 
+	 	<tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
+		<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
+	 	
+	 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+			<beans:property name="url" value="jdbc:mysql://localhost:3306/abak"/>
+			<beans:property name="username" value="root" />
+			<beans:property name="password" value="root" />
+		</beans:bean>
+		<beans:bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+			<beans:property name="dataSource" ref="dataSource" />
+			<beans:property name="annotatedClasses">
+				<beans:list>
+				 	<beans:value>com.abak.entity.ClientDetailsEntity</beans:value>
+				 	<beans:value>com.abak.entity.UserEntity</beans:value>
+				 	<beans:value>com.abak.entity.UserTypeEntity</beans:value>
+				 	<beans:value>com.abak.entity.Panel</beans:value>
+				 	<beans:value>com.abak.entity.PanelAdditionalComponent</beans:value>
+				 	<beans:value>com.abak.entity.PanelDetails</beans:value>
+				 	<beans:value>com.abak.entity.PanelSpecification</beans:value>
+				 	<beans:value>com.abak.entity.Project</beans:value> 
+	 			</beans:list>
+		</beans:property>
+		<beans:property name="hibernateProperties">
+			<beans:props>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</beans:prop>
+				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				<beans:prop key="hibernate.format_sql">true</beans:prop>
+			</beans:props>
+		</beans:property>
+		</beans:bean>
+		<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<beans:property name="dataSource" ref="dataSource" />
+		</beans:bean>
+	
+		 <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<!-- setting maximum upload size -->
+			<beans:property name="maxUploadSize" value="7000000" />
+		 </beans:bean>
+ 
+
+</beans:beans>

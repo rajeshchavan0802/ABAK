@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="quotationReport_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="527d99be-870a-4a53-b21c-bf41989dfb7e">
+	<property name="ireport.zoom" value="13.109994191499977"/>
+	<property name="ireport.x" value="5192"/>
+	<property name="ireport.y" value="0"/>
+	<field name="srNo" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<field name="unitRate" class="java.lang.String"/>
+	<field name="total" class="java.lang.String"/>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement x="54" y="0" width="1" height="15" uuid="7d252f6b-1a71-4b98-ba12-4577cd65669b"/>
+			</line>
+			<line>
+				<reportElement x="253" y="0" width="1" height="15" uuid="d7619517-3c28-4a84-aeca-eef30d05315b"/>
+			</line>
+			<line>
+				<reportElement x="447" y="0" width="1" height="16" uuid="0f74ef57-49f0-4ce7-bd22-ab32b3ddbcf1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="15" uuid="b15db6a2-425e-44a1-b391-df095e97164b"/>
+			</line>
+			<line>
+				<reportElement x="0" y="15" width="447" height="1" uuid="db756f42-80ea-4b4f-9184-ec427a3fd483"/>
+			</line>
+			<line>
+				<reportElement x="374" y="0" width="1" height="15" uuid="432cc2ee-c39a-4461-8836-dc11fd071be1"/>
+			</line>
+			<line>
+				<reportElement x="299" y="0" width="1" height="15" uuid="7fb75376-4b6d-45ae-9ab1-b6d701970723"/>
+			</line>
+			<textField>
+				<reportElement x="3" y="1" width="48" height="13" uuid="93c7fa34-bee0-4329-8ebb-58fed74dd3ac"/>
+				<textFieldExpression><![CDATA[$F{srNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="1" width="195" height="13" uuid="f8bf49ec-9ea4-4838-83e8-8e1c08a64c39"/>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="1" width="41" height="13" uuid="89996c98-8d24-4707-a9da-46739e8a26f1"/>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="1" width="69" height="13" uuid="62c738ea-8c56-4220-ba00-e52217c7f530"/>
+				<textFieldExpression><![CDATA[$F{unitRate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="1" width="68" height="13" uuid="ab43a84a-2963-491c-80c0-acc250f08dca"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+<title>Project Details</title>
+</head>
+<body>
+	<div id="wrapper">
+	<div id="project_details">
+	<h1>Project Details</h1>
+    <div>
+		<#if projectModel?has_content && projectModel.projectMessgae?has_content> 
+		    ${projectModel.projectMessgae}
+		</#if>
+	</div>
+    <form action="projectDetails" method="get">
+    <div id="project_mainbox1">
+	    <div class="project_box">
+	    	<div class="project_box2">
+	        <h2>Project Name</h2> </div>
+	        <div class="project_box3">
+	       	 <input type="text" name="projectName" placeholder=""  required value="">
+	        </div>
+	    </div><!--project_box-->
+    <div class="project_box">
+    	<div class="project_box2">
+        <h2>Client Name</h2> </div>
+        <div class="project_box3">
+	       <select name="clientName" id="hounseno">
+				<option value="Client Name 1">Client Name 1</option>
+				<option value="Client Name 2">Client Name 2</option>
+		   </select>
+        </div>
+    </div><!--project_box-->
+    <div class="project_box">
+    	<div class="project_box2">
+        <h2>Ugenrcy</h2> </div>
+        <div class="project_box3">
+       	  <select name="requirementType" id="hounseno">
+								<option value="Ugenrcy 1">Ugenrcy 1</option>
+								<option value="Ugenrcy 2">Ugenrcy 2</option>
+								</select>
+        </div>
+    </div><!--project_box-->
+    <div class="project_box">
+    	<div class="project_box2">
+        <h2>Expected delivery date</h2> </div>
+        <div class="project_box3">
+       	 <input type="date" placeholder="" name="deliveryDate"  required value="">
+        </div>
+    </div><!--project_box-->
+    <div class="project_box4">
+    <div class="button"> 
+    	<input type="button" value="Add new pannel">
+        <input type="submit" value="Save Project">
+     </div>
+    </div><!--project_box-->
+    </div><!--project_mainbox1-->
+    </form>
+    
+    <!--project_mainbox2-->
+    
+  </div><!--project_details-->
+</div> <!--wrapper close-->
+	
+
+
+	<h1>projectDetails</h1>
+	<div>
+		<#if projectModel?has_content && projectModel.projectMessgae?has_content> 
+		    ${projectModel.projectMessgae}
+		</#if>
+	</div>
+	<form action="projectDetails" method="get">
+		Project Name<input type="text" name="projectName">
+		client Name<input type="text" name="clientName">
+		Quotation No<input type="text" name="quotationNo">
+		requirementType<input type="text" name="requirementType">
+		deliveryDate<input type="text" name="deliveryDate">
+		note<input type="text" name="note">
+		<input type="submit" name="submit">
+	</form>
+</body>
+</html>

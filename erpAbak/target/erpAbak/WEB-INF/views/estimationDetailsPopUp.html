@@ -1,0 +1,455 @@
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript">
+
+
+function calEbonPrize(){ 
+	$( "#ebonPrize" ).val('');
+	var total = 0;
+	 $( ".caltotalEbon" ).each(function() {
+			if($( this ).val()!='')
+				total = total + parseFloat($( this ).val());
+			});
+		total = parseFloat(total).toFixed(2);
+	 $( "#ebonPrize" ).val(total);
+
+
+	 callaborCost();
+	 caloverHeadCost();
+	 calculateRemainingAmt();
+}
+
+function calTotCompCost(){
+
+	var additionalCoptotal = 0;
+	$( ".calTotCompCost" ).each(function() {
+		if($( this ).val()!='')
+		additionalCoptotal = additionalCoptotal +parseFloat($( this ).val());
+		}); 
+
+	var ebonPrize = parseFloat($( "#ebonPrize" ).val());
+	$("#panelCost").val(parseFloat(additionalCoptotal + ebonPrize).toFixed(2));
+
+
+	callaborCost();
+	caloverHeadCost();
+	calculateRemainingAmt();
+}
+
+
+
+function additionalOnchange(x,y){
+	
+	$('#additionalItem'+y+'Cost').val('');
+	$('#additionalItem'+y+'Cost').val(x.value);
+	calTotCompCost();
+	
+}
+
+
+/* onchange Event */
+ 
+$( "#ebonPrize" ).click(function( event ) {
+	 calEbonPrize();
+});
+
+$( "#fabricatioRate" ).change(function( event ) {
+	$("#fabricatioCost").val( $("#fabricatioQTY").val() * $("#fabricatioRate").val());
+	calEbonPrize(); 
+	calTotCompCost();
+});
+$( "#fabricatioQTY" ).change(function( event ) {
+	$("#fabricatioCost").val( $("#fabricatioQTY").val() * $("#fabricatioRate").val()); 
+	calEbonPrize();
+	calTotCompCost();
+});
+
+$( "#mainBusbarRate" ).change(function( event ) {
+	$("#mainBusbarCost").val( $("#mainBusbarQTY").val() * $("#mainBusbarRate").val());
+	calTotCompCost(); 
+});
+$( "#mainBusbarQTY" ).change(function( event ) {
+	$("#mainBusbarCost").val( $("#mainBusbarQTY").val() * $("#mainBusbarRate").val());
+	calTotCompCost();
+});
+
+$( "#earthBusbarRate" ).change(function( event ) {
+	$("#earthBusbarCost").val( $("#earthBusbarQTY").val() * $("#earthBusbarRate").val());
+	calTotCompCost();
+});
+$( "#earthBusbarQTY" ).change(function( event ) {
+	$("#earthBusbarCost").val( $("#earthBusbarQTY").val() * $("#earthBusbarRate").val());
+	calTotCompCost();
+});
+
+$( "#insulatorRate" ).change(function( event ) {
+	$("#insulatorCost").val( $("#insulatorQTY").val() * $("#insulatorRate").val());
+	calTotCompCost(); 
+});
+$( "#insulatorQTY" ).change(function( event ) {
+	$("#insulatorCost").val( $("#insulatorQTY").val() * $("#insulatorRate").val());
+	calTotCompCost();
+});
+
+$( "#wiringRate" ).change(function( event ) {
+	$("#wiringCost").val( $("#wiringQTY").val() * $("#wiringRate").val());
+	calTotCompCost(); 
+});
+$( "#wiringQTY" ).change(function( event ) {
+	$("#wiringCost").val( $("#wiringQTY").val() * $("#wiringRate").val());
+	calTotCompCost();
+});
+
+$( "#acrylicSheetRate" ).change(function( event ) {
+	$("#acrylicSheetCost").val( $("#acrylicSheetQTY").val() * $("#acrylicSheetRate").val()); 
+	calTotCompCost();
+});
+$( "#acrylicSheetQTY" ).change(function( event ) {
+	$("#acrylicSheetCost").val( $("#acrylicSheetQTY").val() * $("#acrylicSheetRate").val());
+	calTotCompCost();
+
+});
+
+$( "#hardwareCost" ).change(function( event ) {
+	calTotCompCost();
+});
+
+
+$( "#laborPersentage" ).change(function( event ) {
+	callaborCost();
+	
+});
+
+$( "#overHeadPersentage" ).change(function( event ) {
+	caloverHeadCost();
+});
+
+function callaborCost(){
+	var laborCost = 0;
+	var additionalCoptotal = $("#panelCost").val()!='' ? parseFloat($("#panelCost").val()) : 0;
+	laborCost = ($( "#laborPersentage" ).val() * additionalCoptotal)/100;
+	$("#laborCost").val(parseFloat(laborCost).toFixed(2));
+	
+	var panelCost = ($("#panelCost").val() != '' ? parseFloat($("#panelCost").val()) : 0) ;
+	var laborCost = ($("#laborCost").val() != '' ? parseFloat($("#laborCost").val()) : 0) ;
+	var overHeadCost =	 ($("#overHeadCost").val() != '' ? parseFloat($("#overHeadCost").val()) : 0) ;
+	var factoryCost =  panelCost + laborCost + overHeadCost ;
+	
+	$("#factoryCost").val(parseFloat(factoryCost).toFixed(2));
+}
+
+function caloverHeadCost(){
+	var overHeadCost = 0;
+	var additionalCoptotal = $("#panelCost").val()!='' ? parseFloat($("#panelCost").val()) : 0;
+	overHeadCost = ($( "#overHeadPersentage" ).val() * additionalCoptotal)/100;
+	$("#overHeadCost").val(parseFloat(overHeadCost).toFixed(2));
+	
+	var panelCost = ($("#panelCost").val() != '' ? parseFloat($("#panelCost").val()) : 0) ;
+	var laborCost = ($("#laborCost").val() != '' ? parseFloat($("#laborCost").val()) : 0) ;
+	var overHeadCost =	 ($("#overHeadCost").val() != '' ? parseFloat($("#overHeadCost").val()) : 0) ;
+	var factoryCost =  panelCost + laborCost + overHeadCost ;
+	
+	$("#factoryCost").val(parseFloat(factoryCost).toFixed(2));
+}
+
+
+
+</script>
+
+<form action="" method="post" id="estDetailsUpdate">
+<#setting number_format="0.##">
+<div id="popup2" class="overlay">
+	<div class="popup">
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+			<h2>Estimation Details</h2>
+		<div class="search_box">
+			<label>Pannel Name:</label>		
+			<input type='text' name='panelName' value="${panel.panelName}">
+			<label>Total panel Quntity:</label>			
+			<input type="number" name="quntity" value="${panel.quntity}">
+			<input type="hidden" id="panelId" name="panelId" value="${panel.panelId}" />
+			
+		</div>
+		
+			<#assign x = 0>
+			<#assign y = 0>
+			<#list panelDetailsesMap?keys as key> 
+			<#assign y++>
+			
+			<#assign typeOfFeeder="">
+			<#assign feederSubtype="">
+			
+			<#list panelDetailsesMap[key] as list>
+			
+			<#if list.typeOfFeeder??>
+			<#assign typeOfFeeder=list.typeOfFeeder>
+			</#if>
+			
+			<#if list.feederSubtype??>
+			<#assign feederSubtype=list.feederSubtype  >
+			</#if>
+			
+			</#list>
+			
+			<div class="table_box">
+			    	<table width="200" border="1" id="first_table${y}">
+						<tr>
+						<#assign z = 0>
+						
+							
+							 
+								
+									<th colspan="3">
+									<select name="panelDetailses[${x}].typeOfFeeder" > 
+									<option >Select IO/OG</option>
+										<#if typeOfFeeder="incomer">
+			  								<option value="incomer" selected="selected">incomer</option>
+			  							<#else>
+			  								<option value="incomer" >incomer</option>
+			  							</#if>
+			  							 
+			  							 
+			  							<#if typeOfFeeder="Out going">	
+			  								<option value="Out going" selected="selected">Out going</option> 
+			  							<#else>	
+			  								<option value="Out going">Out going</option> 
+			  							</#if>
+			  								
+									</select>
+									</th>
+				 
+								<#if feederSubtype!="">
+									<th colspan="10"><input type="text" name="panelDetailses[${x}].feederSubtype" style="color: #000000;" value="${feederSubtype}" />
+									<img src="images/plus.png" onclick="repeatEstimation()" height="35" width="35"></img>
+									<img src="images/minus.png" onclick="removeMainTemplate(this)" height="35" width="35"></img>
+									</th>
+								<#else>
+									<th colspan="10"><input type="text" name="panelDetailses[${x}].feederSubtype" style="color: #000000;" />
+									<img src="images/plus.png" onclick="repeatEstimation()" height="35" width="35"></img>
+									<img src="images/minus.png" onclick="removeMainTemplate(this)" height="35" width="35"></img>
+									</th>
+								</#if>
+								
+								 
+							
+						</tr>
+						<tr>
+							<!-- <th scope="col">Sr no.</th> -->
+							<th scope="col">Description</th>
+							<th scope="col">QTY</th>
+							<th scope="col">Type</th>
+							<th scope="col">Make</th>
+							<th scope="col">List Price</th>
+							<th scope="col">Discount</th>
+							<th scope="col">Dis Price</th>
+							<th scope="col">Unit Rate</th>
+							<th scope="col">Total</th>
+							<th scope="col"></th>
+						</tr>
+						
+						<#list panelDetailsesMap[key] as list>
+						
+						<tr>
+						 	<!-- <td>1</td> -->
+						 	
+							<td><input type="hidden" value="groupName${y}" name="panelDetailses[${x}].groupName" value="${list.groupName}" id=panelDetailes${x}group>
+							<#if list.panelDetailsId??>
+							<input type="hidden" name="panelDetailses[${x}].panelDetailsId" value="${list.panelDetailsId}" id=panelDetailes${x}panelDetailsId>
+							</#if>
+							<input type="text" name="panelDetailses[${x}].description" id="panelDetailes${x}description" value="${list.description}" size="7"></td>
+							<td><input type="text" name="panelDetailses[${x}].quntity" value="${list.quntity}" id="panelDetailes${x}quntity" onchange="panelDetailesTotal(${x})" size="7"></td>
+							<td><input type="text" name="panelDetailses[${x}].type" value="${list.type}" id="panelDetailes${x}type" size="7"></td>
+							<td><input type="text" name="panelDetailses[${x}].make" value="${list.make}" id="panelDetailes${x}make" size="7"></td>
+							<td><input type="text" name="panelDetailses[${x}].listPrice" value="${list.listPrice}" id="panelDetailes${x}listPrice" onchange="panelDetailesTotal(${x})" size="7"></td>  
+							<td><input type="text" name="panelDetailses[${x}].discount" value="${list.discount}" id="panelDetailes${x}discount" onchange="panelDetailesTotal(${x})" size="7"></td>
+							<td><input type="text" name="panelDetailses[${x}].discountPrice" value="${list.discountPrice}" id="panelDetailes${x}discountPrice" size="7"></td>
+							<td><input type="text" name="panelDetailses[${x}].unitRate" value="${list.unitRate}" id="panelDetailes${x}unitRate" size="7"></td>
+							<td><input type="text" name="panelDetailses[${x}].total" value="${list.total}" id="panelDetailes${x}total" class="caltotalEbon" size="7"></td>
+							<td><img src="images/plus.png" onclick="repeatrow('first_table${y}','groupName${y}')" height="35" width="35"></img>
+							<img src="images/minus.png" height="35" width="35" onclick="this.parentElement.parentElement.remove();"></img></td>
+						</tr>
+						<#assign x ++>
+						</#list>
+						
+					</table>
+			</div>
+			
+		
+		</#list>
+		<input type="hidden" id="panelDetailsRowCount" value=${x}>
+		<input type="hidden" id="groupCount" value=${y}>
+		
+		
+		
+		
+		<div id="append_table">
+		</div>
+		
+		
+		<div>	
+		<label>Total EBON Prize:</label>			
+		<input type="text" name="ebonPrize"  id="ebonPrize"  value="${panel.ebonPrize}"  />
+		</div>
+		<br/><br/><br/><br/><br/>
+		
+		<div class="additional_component">
+			<table class="table_additional_component" border="1" >
+				<tr>
+					<th>Additional component</th>
+					<th>Qty</th>
+					<th>Rate</th>
+					<th>Total</th>
+				</tr>
+				<tr>
+					<td><!-- <input style="width: 90px;" type="text" name="componentDescription" value="Fabrication(KG)" readonly="readonly"> -->
+					Fabrication(KG)
+					<input  type="hidden" name="panelAdditionalComponents[0].componentDescription" value="Fabrication(KG)" readonly="readonly">
+					</td>
+					
+					<td><input type="text" name="panelAdditionalComponents[0].quntity" id="fabricatioQTY" value="${panel.panelAdditionalComponents[0].quntity}"/></td>
+					<td><input type="text" name="panelAdditionalComponents[0].rate" id="fabricatioRate" value="${panel.panelAdditionalComponents[0].rate}"/></td>
+					<td><input type="text" name="panelAdditionalComponents[0].cost"  id="fabricatioCost" value="${panel.panelAdditionalComponents[0].cost}" class="calTotCompCost" /></td>
+				</tr>
+				<tr>
+					<td>Main Busbar(KG)
+					<!-- <input style="width: 90px;" type="text" name="componentDescription" value="Main Busbar(KG)" readonly="readonly"> -->
+					<input type="hidden" name="panelAdditionalComponents[1].componentDescription" value="Main Busbar(KG)" readonly="readonly">
+					</td>
+					<td><input type="text" name="panelAdditionalComponents[1].quntity"  id="mainBusbarQTY" value="${panel.panelAdditionalComponents[1].quntity}"/></td>
+					<td><input type="text" name="panelAdditionalComponents[1].rate" id="mainBusbarRate" value="${panel.panelAdditionalComponents[1].rate}"/></td>
+					<td><input type="text" name="panelAdditionalComponents[1].cost" id="mainBusbarCost" value="${panel.panelAdditionalComponents[1].cost}" class="calTotCompCost"/></td>
+				</tr>
+				<tr>
+					<td>Earth Busbar(KG)
+					<input  type="hidden" name="panelAdditionalComponents[2].componentDescription" value="Earth Busbar(KG)" readonly="readonly">
+					</td>
+					<td><input type="text" name="panelAdditionalComponents[2].quntity" id="earthBusbarQTY" value="${panel.panelAdditionalComponents[2].quntity}"/></td>
+					<td><input type="text" name="panelAdditionalComponents[2].rate" id="earthBusbarRate" value="${panel.panelAdditionalComponents[2].rate}"/></td>
+					<td><input type="text" name="panelAdditionalComponents[2].cost"  id="earthBusbarCost" value="${panel.panelAdditionalComponents[2].cost}" class="calTotCompCost"/></td>
+				</tr>
+				<tr>
+					<td>Insulator
+					<input  type="hidden" name="panelAdditionalComponents[3].componentDescription" value="Insulator" readonly="readonly"></td>
+					<td><input type="text" name="panelAdditionalComponents[3].quntity" id="insulatorQTY"  value="${panel.panelAdditionalComponents[3].quntity}"/></td>
+					<td><input type="text" name="panelAdditionalComponents[3].rate" id="insulatorRate" value="${panel.panelAdditionalComponents[3].rate}"/></td>
+					<td><input type="text" name="panelAdditionalComponents[3].cost" id="insulatorCost" value="${panel.panelAdditionalComponents[3].cost}" class="calTotCompCost"/></td>
+				</tr>
+				<tr>
+					<td>Wiring(LOT)
+					<input type="hidden" name="panelAdditionalComponents[4].componentDescription" value="Wiring(LOT)" readonly="readonly"></td>
+					<td><input type="text" name="panelAdditionalComponents[4].quntity" value="${panel.panelAdditionalComponents[4].quntity}" id="wiringQTY" /></td>
+					<td><input type="text" name="panelAdditionalComponents[4].rate" value="${panel.panelAdditionalComponents[4].rate}" id="wiringRate" /></td>
+					<td><input type="text" name="panelAdditionalComponents[4].cost" value="${panel.panelAdditionalComponents[4].cost}" id="wiringCost" class="calTotCompCost"/></td>
+				</tr>
+				<tr>
+					<td>Hardware(LOT)
+					<input type="hidden" name="panelAdditionalComponents[5].componentDescription" value="Hardware(LOT)" readonly="readonly"></td>
+					<td><input type="text" name="panelAdditionalComponents[5].quntity"  disabled="disabled" /></td>
+					<td><input type="text" name="panelAdditionalComponents[5].rate"  disabled="disabled"/></td>
+					<td><input type="text" name="panelAdditionalComponents[5].cost" value="${panel.panelAdditionalComponents[5].cost}" id="hardwareCost" class="calTotCompCost" /></td>
+				</tr>
+				<tr>
+					<td>Acrylic Sheet
+					<input type="hidden" name="panelAdditionalComponents[6].componentDescription" value="Acrylic Sheet" readonly="readonly"></td>
+					<td><input type="text" name="panelAdditionalComponents[6].quntity" id="acrylicSheetQTY" value="${panel.panelAdditionalComponents[6].quntity}" /></td>
+					<td><input type="text" name="panelAdditionalComponents[6].rate" id="acrylicSheetRate" value="${panel.panelAdditionalComponents[6].rate}" /></td>
+					<td><input type="text" name="panelAdditionalComponents[6].cost" id="acrylicSheetCost" value="${panel.panelAdditionalComponents[6].cost}" class="calTotCompCost"/></td>
+				</tr>
+				<tr id="itemlist_1">
+					<td>ADDITIONAL ITEM 1
+					<input type="hidden" name="panelAdditionalComponents[7].componentDescription" value="ADDITIONAL ITEM 1" readonly="readonly">
+					<img src="images/plus.png" height="35" width="35" onclick="repeatitem('itemlist_1')"></img>
+					<img src="images/minus.png" height="35" width="35" onclick="this.parentElement.parentElement.parentElement.parentElement.remove();"></img></td>
+					<td></td>
+					<td><input type="text" name="panelAdditionalComponents[7].rate" value="${panel.panelAdditionalComponents[7].rate}" id="additionalItem1Rate" onchange="additionalOnchange(this,'1')"/></td>
+					<td><input type="text" name="panelAdditionalComponents[7].cost" value="${panel.panelAdditionalComponents[7].cost}" id="additionalItem1Cost" class="calTotCompCost"/></td>
+				</tr>
+				<#assign x = 0>
+				<#assign y = 1>
+				<#list panel.panelAdditionalComponents as additionalComList>
+				
+				
+				
+    			
+    			<#assign x++>
+				</#list>
+				
+				
+				
+				
+				
+				<tr>
+					<td colspan="3" style="text-align:right">PANEL COST (ONLY MATERIAL):</td>
+					<td><input type="text" name="additionalComponentTotal" id="panelCost" value="${panel.additionalComponentTotal}"/></td>
+				</tr>
+			</table>
+		</div>
+		<div class="labour_cost">
+			<table border="1">
+				<tr>
+					<td>LABOR COST</td>
+					<td><input type="text" name="laborPersentage" id="laborPersentage" value="${(panel.laborPersentage)!''}"/></td>
+					<td><input type="text" name="laborCost" id="laborCost" value="${panel.laborCost}"/></td>
+				</tr>
+				<tr>
+					<td>OVERHEAD COST</td>
+					<td><input type="text" name="overHeadPersentage" id="overHeadPersentage"value="${panel.overHeadPersentage}"/></td>
+					<td><input type="text" name="overHeadCost" id="overHeadCost" value="${panel.overHeadCost}"/></td>
+				</tr>
+				<tr>
+					<td colspan="2"  style="text-align:right">FACTORY COST</td>
+					<td><input type="text" name="factoryCost" id="factoryCost" value="${panel.factoryCost}" /></td>
+				</tr>
+			</table>
+		</div>
+		<div class="miscellanous_cost">
+			<table class="table_miscellanous_cost" border="1">
+				<tr>
+					<td>MISCELLANEOUS COST</td>
+					<td><input type="text" name="miscellaneousCostPercentage" value="${panel.miscellaneousCostPercentage}" onchange="calculateRemainingAmt()" id="miscellaneousCostPercentage" /></td>
+					<td><input type="text" name="miscellaneousCost" id="miscellaneousCost" value="${panel.miscellaneousCost}"/></td>
+				</tr>
+								<tr>
+					<td>MARGIN</td>
+					<td><input type="text" name="marginPersentage" onchange="calculateRemainingAmt()" id="marginPersentage"  value="${panel.marginPersentage}"/></td>
+					<td><input type="text" name="marginCost" id="marginCost" value="${panel.marginCost}"/></td>
+				</tr>
+				<tr>
+					<td>TRANSPORT</td>
+					<td><input type="text" name="transportPercentage"   disabled="disabled" /></td>
+					<td><input type="text" name="transportCost"  onchange="calculateRemainingAmt()" id="transportCost" value="${panel.transportCost}" /></td>
+				</tr>
+				<tr>
+					<td>WOODEN CRATE PACKING</td>
+					<td><input type="text" name="woodenCratePakagingCostPercentage" disabled="disabled"/></td>
+					<td><input type="text" name="woodenCratePakagingCost" onchange="calculateRemainingAmt()" id="woodenCratePakagingCost"  value="${panel.woodenCratePakagingCost}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"  style="text-align:right">NET TOTAL</td>
+					<td><input type="text" name="netTotal" id="netTotal"  value="${panel.netTotal}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"  style="text-align:right">GRAND ROUNDED TOTAL</td>
+					<td><input type="text" name="grandRounedTotal" id="grandRounedTotal" value="${panel.grandRounedTotal}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"  style="text-align:right">NEGOTIATED PRICE</td>
+					<td><input type="text" name="negotiatedPrice" id="negotiatedPrice" value="${panel.negotiatedPrice}"/></td>
+				</tr>
+			</table>
+		</div>
+
+
+	<div class="popup_rightbox"> </div>
+		<div class="project_box4">
+			<div class="button"> 
+				<input type="button"  value="Save" onclick="updateEstimationDetails()">
+				<input type="button" value="Cancel" onclick="closeUpadatePopUp()">
+			 </div>
+		</div>
+	</div>
+	</div>
+	</div>
+	
+</form>

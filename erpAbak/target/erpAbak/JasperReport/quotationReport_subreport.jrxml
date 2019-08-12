@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="quotationReport_subreport" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a50dda31-80ec-4531-8249-3d9546601a58">
+	<property name="ireport.zoom" value="7.594996671664845"/>
+	<property name="ireport.x" value="3134"/>
+	<property name="ireport.y" value="30"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Rajesh chavan\\git\\erpAbak\\src\\main\\webapp\\JasperReport\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="panelName" class="java.lang.String"/>
+	<field name="quotationReportSubReport3ChildDTOS" class="java.util.List"/>
+	<detail>
+		<band height="74" splitType="Stretch">
+			<textField>
+				<reportElement x="112" y="0" width="331" height="15" uuid="09048d6e-2fc4-4494-abeb-24b78e239ab7"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{panelName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="13" y="18" width="512" height="1" uuid="80c9ea87-7978-46c2-8b80-6c2b5f27b4cd"/>
+			</line>
+			<line>
+				<reportElement x="13" y="19" width="1" height="17" uuid="a29dd48b-3cce-4013-8120-fdb1b3f6875b"/>
+			</line>
+			<staticText>
+				<reportElement x="17" y="20" width="43" height="16" uuid="c35bb7f5-8972-48e3-b27b-1f80c7e8cc7c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SR NO.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="63" y="19" width="1" height="17" uuid="42357fe1-c33f-4d73-a3e4-febdfd51889f"/>
+			</line>
+			<staticText>
+				<reportElement x="64" y="20" width="320" height="16" uuid="5fc95e74-ddda-44e4-b826-acc11355d69c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCRIPTION ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="20" width="57" height="16" uuid="414cbe43-1f4f-4333-8e89-63c88564bfe4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="525" y="18" width="1" height="18" uuid="61d70671-5184-44aa-99d0-c93c5501624d"/>
+			</line>
+			<line>
+				<reportElement x="453" y="19" width="1" height="17" uuid="f65f98ee-5a8d-4571-9691-070cdc407030"/>
+			</line>
+			<staticText>
+				<reportElement x="458" y="20" width="64" height="16" uuid="07bf87db-a894-4979-8765-a925f7a8155a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MAKE ]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="13" y="37" width="512" height="17" uuid="96393ecc-81fc-4333-b128-2a61f6452783"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{quotationReportSubReport3ChildDTOS})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "quotationReport_subreport_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement x="13" y="36" width="512" height="1" uuid="dde7f8f8-ceca-4e89-877a-da7b1569d5bf"/>
+			</line>
+			<line>
+				<reportElement x="389" y="19" width="1" height="17" uuid="0275706c-53e1-4ff8-a629-cec3d68ac6c6"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

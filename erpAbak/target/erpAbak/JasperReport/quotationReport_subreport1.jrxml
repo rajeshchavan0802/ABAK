@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="quotationReport_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="2.1435888100000016"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="srNo" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="qty" class="java.lang.String"/>
+	<field name="unitRate" class="java.lang.String"/>
+	<field name="total" class="java.lang.String"/>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement x="376" y="1" width="70" height="14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[$F{total}]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="1" width="39" height="14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[$F{qty}]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="1" width="194" height="14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[$F{description}]]></text>
+			</staticText>
+			<line>
+				<reportElement x="54" y="0" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement x="253" y="0" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement x="447" y="-1" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="15"/>
+			</line>
+			<staticText>
+				<reportElement x="7" y="1" width="40" height="14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[$F{srNo}]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="1" width="67" height="14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[$F{unitRate}]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="15" width="448" height="1"/>
+			</line>
+			<line>
+				<reportElement x="374" y="0" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement x="299" y="0" width="1" height="15"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

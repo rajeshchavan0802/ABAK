@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	
+	$(document).ready(function(){
+
+		$( "#newSalesOrderTab" ).click(function() {
+			
+			alert('rajesh chavan');		
+			var resData = doAjaxCall('sales?newSalseEntry', 'get', '', false, 'text');
+			alert(resData);	
+				
+		});
+		 
+	});
+
+
+
+	function doAjaxCall(url, reqType, data, async, dataType){
+		 
+		var result='';
+		result =$.ajax({
+				url : url,
+				data : data,
+				type : reqType,
+				async : async,
+				dataType : dataType,
+				success : function(response) {
+					
+					//result = response;
+				},
+				 error : function(xhr, ajaxOptions, thrownError) {
+
+				} 
+			}).responseText;
+		
+		 return result;
+		
+	}
+
+
+	 
+	
+	</script>
+
+
+
+
+
+
+
+<title>ABAK</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+<!-- Custom CSS -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<!-- font-awesome icons CSS -->
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<!-- //font-awesome icons CSS-->
+
+<!-- side nav css file -->
+<link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
+<!-- //side nav css file -->
+ 
+</head> 
+<body>
+	<div class="main-content">
+		<div id="header_fixed">
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+		<a class="navbar-brand" href="index.html">
+			<!-- <img src="images/logo.png" alt="logo"> -->
+			</a>
+			<div class="header-right">
+				<div class="profile_details">		
+					<ul>
+						<li class="dropdown profile_details_drop">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<div class="profile_img">	
+									
+									<div class="user-name">
+										<p>User Name</p>
+										</div>
+									<i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i>
+									<div class="clearfix"></div>	
+								</div>	
+							</a>
+							<ul class="dropdown-menu drp-mnu">
+								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
+								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+							</ul>
+						</li>
+					</ul>
+				</div>		
+			</div>
+		</div>
+		<!-- //header-ends -->
+		
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+		<!--left-fixed -navigation-->
+		<aside class="sidebar-left">
+      <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="sidebar-menu">
+             
+              <li class="treeview">
+                <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+              </li>
+			  <li class="treeview">
+                <a href="#">
+              <i class="fa fa-dashboard"></i> <span>Sales Order</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="#"><i class="fa fa-angle-left pull-right"></i> Tab1</a>
+				   <ul class="treeview-menu">
+                  <li><a href="#"><i class="fa fa-angle-right"></i> Home</a></li>
+                  <li><a href="#"><i class="fa fa-angle-right"></i> Home</a></li>
+                </ul>
+				  </li>
+                  <li><a href="sales?newSalseEntry"><i class="fa fa-angle-right"></i> Tab2</a></li>
+                </ul>
+              </li>
+              
+              <li class="treeview"> <a href="">
+                <span id="newSalesOrderTab">New Sales order</span>
+               </a>
+              </li>
+              
+              
+              
+              <li><a href="#"><i class="fa fa-angle-right text-red"></i> <span>Tab4</span></a></li>
+              <li><a href="#"><i class="fa fa-angle-right text-yellow"></i> <span>tab5</span></a></li>
+              <li><a href="#"><i class="fa fa-angle-right text-aqua"></i> <span>tab6</span></a></li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </nav>
+    </aside>
+			
+			
+		</div>
+		<!--left-fixed -navigation-->
+		
+		
+		</div>
+	
+		
+
+	</div>
+		
+
+	 <!-- js
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<!-- side nav js -->
+	  <script src="js/bootstrap.js"> </script>
+
+	<!--<script src='js/SidebarNav.min.js' type='text/javascript'></script>-->
+	<!-- <script>
+      $('.sidebar-menu').SidebarNav()
+    </script> -->
+   	<!-- //side nav js -->
+	
+
+</body>
+</html>

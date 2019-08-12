@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="erpAbak:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="erpAbak.war">
+      <element id="artifact" artifact-name="erpAbak:war exploded" />
+    </root>
+  </artifact>
+</component>
