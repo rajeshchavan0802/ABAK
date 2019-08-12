@@ -93,7 +93,7 @@ var groupCount = 1;
    			'<td id="width'+panelKey+'">'+res.width+'</td>' +
    			'<td id="defth'+panelKey+'">'+res.defth+'</td>' +
    	        "<td><img src='images/tick.png' height='35' width='30'onclick='getPanelDetails("+res.panelKey+")'></td>" +
-   	    	"<td><img src='images/tick.png' height='35' width='30'></td>" +
+   	        "<td><img src='images/tick.png' height='35' width='30' onclick='getPanelSpecDetails("+res.panelKey+")'></td>" +
    	      "</tr>"
    	  );
    	
@@ -374,4 +374,37 @@ var groupCount = 1;
 				clearEnquiry();
 			}
 	 
+			
+			
+			function getPanelSpecDetails(panelKey){
+				$("#tempEstimationSpecPopUp").empty();
+				$("#tempEstimationSpecPopUp").html('');
+
+				var data = 'panelKey='+ panelKey;
+				var resData = doAjaxCall('estimation?estimationDetailsSpecPopup', 'post', data, false, 'json');
+				$("#tempEstimationSpecPopUp").append(resData);
+				window.location = "#popup1";
+				 }
+				 
+				function updateEstimationSpecDetails(){
+				var panelId = $("#panelId").val();
+				    var data = $("#estDetailsSpecUpdate").serialize();
+				    var resData = doAjaxCall('estimation?estSpecIncoming', 'post', data, false, 'json');
+				    var res = JSON.parse(resData);
+				    $("#tempEstimationSpecPopUp").empty();
+				    $("#tempEstimationSpecPopUp").html('');
+				    $( "#estDetailsSpecUpdate" ).remove();
+				}
+
+				 function closeUpadateSpecPopUp(){
+				$("#tempEstimationSpecPopUp").empty();
+				$("#tempEstimationSpecPopUp").html('');
+				  $( "#estDetailsSpecUpdate" ).remove();
+				}
+			
+			
+			
+			
+			
+			
  

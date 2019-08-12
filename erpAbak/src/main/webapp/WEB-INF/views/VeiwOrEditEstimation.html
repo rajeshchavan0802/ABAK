@@ -191,14 +191,14 @@
    			<td id="width${list.panelId}">${(list.width)!""}</td>
    			<td id="defth${list.panelId}">${(list.defth)!""}</td>
    	        <td><img src='images/tick.png' height='35' width='30'onclick="getPanelDetails(${list.panelId},'w')"></td>
-   	    	<td><img src='images/tick.png' height='35' width='30'></td>
+   	    	<td><img src='images/tick.png' height='35' width='30' onclick="getPanelSpecDetails(${list.panelId})" ></td>
    	      </tr>
 		  </#list>
  		</table>
 
- 
+ 	<div id="tempEstimationSpecPopUp">
+	</div>
 	<div id="tempEstimationPopUp">
-
 	</div>
 
  

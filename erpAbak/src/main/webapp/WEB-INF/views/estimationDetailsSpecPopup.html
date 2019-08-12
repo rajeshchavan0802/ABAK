@@ -1,0 +1,419 @@
+<form action="" method="post" id="estDetailsSpecUpdate">
+
+
+
+<div id="popup1" class="overlay">
+	<div class="popup">
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+			<div class="popup_leftbox">		
+<table width="200" border="1">
+  <tr>
+    <th width="136" scope="col">&nbsp;</th>
+    <th colspan="2" scope="col">CONSTRUCTION DETAILS</th>
+    </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[0].specificationType" value="CONSTRUCTION DETAILS">
+    	<input type="hidden" name="panelSpecifications[0].specificationDescription" value="PANEL LOCATION">1</td>
+    <td width="354">PANEL LOCATION</td>
+    <td width="1219">
+	<select name="panelSpecifications[0].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  	  <option value="INDOOR">INDOOR</option>
+		 <option value="OUTDOOR">OUTDOOR</option>
+	</select>
+</td>
+  </tr>
+  <tr>
+	<td><input type="hidden" name="panelSpecifications[1].specificationType" value="CONSTRUCTION DETAILS">
+	<input type="hidden" name="panelSpecifications[1].specificationDescription" value="CONSTRUCTION TYPE">2</td>
+    <td>CONSTRUCTION TYPE</td>
+    <td><select name="panelSpecifications[1].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="WELDED">WELDED</option>
+	  <option value="MODULAR/BOLTED">MODULAR/BOLTED</option>
+	  <option value="SEMI MODULAR">SEMI MODULAR</option>
+	</select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[2].specificationType" value="CONSTRUCTION DETAILS">
+    <input type="hidden" name="panelSpecifications[2].specificationDescription" value="DEGREE OF PROTECTION / IP RATING">3</td>
+    <td>DEGREE OF PROTECTION / IP RATING</td>
+    <td><select name="panelSpecifications[2].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="42">42</option>
+	  <option value="43">43</option>
+	  <option value="52">52</option>
+	  <option value="54">54</option>
+	  <option value="55">55</option>
+	  <option value="65">65</option>
+	   <option value="66">66</option>
+	  <option value="67">67</option>
+	</select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[3].specificationType" value="CONSTRUCTION DETAILS">
+    <input type="hidden" name="panelSpecifications[3].specificationDescription" value="MOUNTING TYPE">4</td>
+    <td>MOUNTING TYPE</td>
+    <td><select name="panelSpecifications[3].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="FLOOR MOUNTED">FLOOR MOUNTED</option>
+	  <option value="WALL MOUNTED">WALL MOUNTED</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[4].specificationType" value="CONSTRUCTION DETAILS">
+    <input type="hidden" name="panelSpecifications[4].specificationDescription" value="CABLE ACCESS">5</td>
+    <td>CABLE ACCESS</td>
+    <td><select name="panelSpecifications[4].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="FRONT">FRONT</option>
+	  <option value="REAR">REAR</option>
+	  <option value="SIDE">SIDE</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[5].specificationType" value="CONSTRUCTION DETAILS">
+    <input type="hidden" name="panelSpecifications[5].specificationDescription" value="FORM TYPE">6</td>
+    <td>FORM TYPE</td>
+    <td><select name="panelSpecifications[5].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="FORM 1">FORM 1</option>
+	  <option value="FORM 2A">FORM 2A</option>
+	  <option value="FORM 2B">FORM 2B</option>
+	  <option value="FORM 3A">FORM 3A</option>
+	  <option value="FORM 3B">FORM 3B</option>
+	  <option value="FORM 4A">FORM 4A</option>
+	  <option value="FORM 4B">FORM 4B</option>
+	 </select></td>
+  </tr>
+  <tr><td><input type="text" name="panelKey" value="${panelKey}"></td></tr>
+</table>
+
+		
+<table width="200" border="1">
+  <tr>
+    <th width="136" scope="col">&nbsp;</th>
+    <th colspan="2" scope="col">SHEET MATERIAL (THICKNESS IN MM)</th>
+    </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[6].specificationType" value="SHEET MATERIAL (THICKNESS IN MM)">
+    <input type="hidden" name="panelSpecifications[6].specificationDescription" value="MAIN BODY / STRUCTURE">1</td>
+    <td width="354">MAIN BODY / STRUCTURE</td>
+    <td width="219"><select name="panelSpecifications[6].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="1.2 mm">1.2 mm</option>
+	  <option value="1.4 mm">1.4 mm</option>
+	  <option value="1.6 mm">1.6 mm</option>
+	  <option value="1.8 mm">1.8 mm</option>
+	  <option value="2 mm">2 mm</option>
+	  <option value="2.5 mm">2.5 mm</option>
+	  <option value="3 mm">3 mm</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[7].specificationType" value="SHEET MATERIAL (THICKNESS IN MM)">
+    <input type="hidden" name="panelSpecifications[7].specificationDescription" value="MOUNTING PLATE">2</td>
+    <td>MOUNTING PLATE</td>
+    <td><select name="panelSpecifications[7].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="1.2 mm">1.2 mm</option>
+	  <option value="1.4 mm">1.4 mm</option>
+	  <option value="1.6 mm">1.6 mm</option>
+	  <option value="1.8 mm">1.8 mm</option>
+	  <option value="2 mm">2 mm</option>
+	  <option value="2.5 mm">2.5 mm</option>
+	  <option value="3 mm">3 mm</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[8].specificationType" value="SHEET MATERIAL (THICKNESS IN MM)">
+    <input type="hidden" name="panelSpecifications[8].specificationDescription" value="DOORS & COVERS">3</td>
+    <td>DOORS & COVERS</td>
+    <td><select name="panelSpecifications[8].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="1.2 mm">1.2 mm</option>
+	  <option value="1.4 mm">1.4 mm</option>
+	  <option value="1.6 mm">1.6 mm</option>
+	  <option value="1.8 mm">1.8 mm</option>
+	  <option value="2 mm">2 mm</option>
+	  <option value="2.5 mm">2.5 mm</option>
+	  <option value="3 mm">3 mm</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[9].specificationType" value="SHEET MATERIAL (THICKNESS IN MM)">
+    <input type="hidden" name="panelSpecifications[9].specificationDescription" value="PARTITION">4</td>
+    <td>PARTITION</td>
+    <td><select name="panelSpecifications[1].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="1.2 mm">1.2 mm</option>
+	  <option value="1.4 mm">1.4 mm</option>
+	  <option value="1.6 mm">1.6 mm</option>
+	  <option value="1.8 mm">1.8 mm</option>
+	  <option value="2 mm">2 mm</option>
+	  <option value="2.5 mm">2.5 mm</option>
+	  <option value="3 mm">3 mm</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[10].specificationType" value="SHEET MATERIAL (THICKNESS IN MM)">
+    <input type="hidden" name="panelSpecifications[10].specificationDescription" value="GLAND PLATE">5</td>
+    <td>GLAND PLATE  </td>
+    <td><select name="panelSpecifications[10].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="1.2 mm">1.2 mm</option>
+	  <option value="1.4 mm">1.4 mm</option>
+	  <option value="1.6 mm">1.6 mm</option>
+	  <option value="1.8 mm">1.8 mm</option>
+	  <option value="2 mm">2 mm</option>
+	  <option value="2.5 mm">2.5 mm</option>
+	  <option value="3 mm">3 mm</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[11].specificationType" value="SHEET MATERIAL (THICKNESS IN MM)">
+    <input type="hidden" name="panelSpecifications[11].specificationDescription" value="BASE FRAME">6</td>
+    <td>BASE FRAME</td>
+    <td><select name="panelSpecifications[11].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="75mm (75 x 40 x 5)">75mm (75 x 40 x 5)</option>
+	  <option value="100mm (100 x50 x 5)">100mm (100 x50 x 5)</option>
+	  <option value="NA">NA</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[12].specificationType" value="SHEET MATERIAL (THICKNESS IN MM)">
+    <input type="hidden" name="panelSpecifications[12].specificationDescription" value="STAND / ANGLE FRAME">1</td>
+    <td>STAND / ANGLE FRAME</td>
+    <td><select name="panelSpecifications[12].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="40 x 40 x 5">40 x 40 x 5</option>
+	  <option value="50 x 50 x 5">50 x 50 x 5</option>
+	  <option value="NA">NA</option>
+	 </select></td>
+  </tr>
+</table>
+
+		
+<table width="200" border="1">
+  <tr>
+    <th width="136" scope="col">&nbsp;</th>
+    <th colspan="2" scope="col">PAINTING</th>
+    </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[13].specificationType" value="PAINTING">
+    <input type="hidden" name="panelSpecifications[13].specificationDescription" value="OUTER PANEL SHADE COLOR">1</td>
+    <td width="354">OUTER PANEL SHADE COLOR</td>
+    <td width="219"><select name="panelSpecifications[13].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="RAL 7032">RAL 7032</option>
+	  <option value="RAL 7035">RAL 7035</option>
+	  <option value="RAL 7047">RAL 7047</option>
+	  <option value="RAL 9002">RAL 9002</option>
+	  <option value="RAL 9003">RAL 9003</option>
+	  <option value="RAL 9022">RAL 9022</option>
+	  <option value="RAL 5002">RAL 5002</option>
+	  <option value="BLACK">BLACK</option>
+	  <option value="POST OFFICE RED">POST OFFICE RED</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[14].specificationType" value="PAINTING">
+    <input type="hidden" name="panelSpecifications[14].specificationDescription" value="INNER PANEL SHADE COLOR">1</td>
+    <td>INNER PANEL SHADE COLOR</td>
+    <td><select name="panelSpecifications[14].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="RAL 7032">RAL 7032</option>
+	  <option value="RAL 7035">RAL 7035</option>
+	  <option value="RAL 7047">RAL 7047</option>
+	  <option value="RAL 9002">RAL 9002</option>
+	  <option value="RAL 9003">RAL 9003</option>
+	  <option value="RAL 9022">RAL 9022</option>
+	  <option value="RAL 5002">RAL 5002</option>
+	  <option value="BLACK">BLACK</option>
+	  <option value="POST OFFICE RED">POST OFFICE RED</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[15].specificationType" value="PAINTING">
+    <input type="hidden" name="panelSpecifications[15].specificationDescription" value="MICRONS">1</td>
+    <td>MICRONS</td>
+    <td><select name="panelSpecifications[15].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="60-70">60-70</option>
+	  <option value="60-80">60-80</option>
+	  <option value="70-80">70-80</option>
+	  <option value="70-90">70-90</option>
+	  <option value="80-90">80-90</option>
+	  <option value="80-100">80-100</option>
+	  <option value="90-100">90-100</option>
+	  <option value="90-110">90-110</option>
+	  <option value="100-110">100-110</option>
+	  <option value="110-120">110-120</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[16].specificationType" value="PAINTING">
+    <input type="hidden" name="panelSpecifications[16].specificationDescription" value="BASE FRAME SHADE COLOR">1</td>
+    <td>BASE FRAME SHADE COLOR</td>
+    <td><select name="panelSpecifications[16].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="RAL 7032">RAL 7032</option>
+	  <option value="RAL 7035">RAL 7035</option>
+	  <option value="RAL 7047">RAL 7047</option>
+	  <option value="RAL 9002">RAL 9002</option>
+	  <option value="RAL 9003">RAL 9003</option>
+	  <option value="RAL 9022">RAL 9022</option>
+	  <option value="RAL 5002">RAL 5002</option>
+	  <option value="BLACK">BLACK</option>
+	  <option value="POST OFFICE RED">POST OFFICE RED</option>
+	  <option value="FIRE RED">FIRE RED</option>
+	  <option value="NA">NA</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[17].specificationType" value="PAINTING">
+    <input type="hidden" name="panelSpecifications[17].specificationDescription" value="STAND SHADE COLOR">1</td>
+    <td>STAND SHADE COLOR</td>
+    <td><select name="panelSpecifications[17].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="RAL 7032">RAL 7032</option>
+	  <option value="RAL 7035">RAL 7035</option>
+	  <option value="RAL 7047">RAL 7047</option>
+	  <option value="RAL 9002">RAL 9002</option>
+	  <option value="RAL 9003">RAL 9003</option>
+	  <option value="RAL 9022">RAL 9022</option>
+	  <option value="RAL 5002">RAL 5002</option>
+	  <option value="BLACK">BLACK</option>
+	  <option value="POST OFFICE RED">POST OFFICE RED</option>
+	  <option value="FIRE RED">FIRE RED</option>
+	  <option value="NA">NA</option>
+	 </select></td>
+  </tr>
+</table>
+
+		
+<table width="200" border="1">
+  <tr>
+    <th width="136" scope="col">&nbsp;</th>
+    <th colspan="2" scope="col"> TERMINATION
+</th>
+    </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[18].specificationType" value="TERMINATION">
+    <input type="hidden" name="panelSpecifications[18].specificationDescription" value="INCOMING CABLE ENTRY">1</td>
+    <td width="354">INCOMING CABLE ENTRY</td>
+    <td width="219"><select name="panelSpecifications[18].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="TOP">TOP</option>
+	  <option value="BOTTOM">BOTTOM</option>
+	  <option value="SIDE">SIDE</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[19].specificationType" value="TERMINATION">
+    <input type="hidden" name="panelSpecifications[19].specificationDescription" value="OUTGOING CABLE ENTRY">2</td>
+    <td>OUTGOING CABLE ENTRY</td>
+    <td><select name="panelSpecifications[19].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="TOP">TOP</option>
+	  <option value="BOTTOM">BOTTOM</option>
+	  <option value="SIDE">SIDE</option>
+	 </select></td>
+  </tr>
+ </table>
+		
+<table width="200" border="1">
+  <tr>
+    <th width="136" scope="col">&nbsp;</th>
+    <th colspan="2" scope="col">BUSBAR</th>
+    </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[20].specificationType" value="BUSBAR">
+    <input type="hidden" name="panelSpecifications[20].specificationDescription" value="MATERIAL">1</td>
+    <td>MATERIAL</td>
+    <td><select name="panelSpecifications[20].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="ALUMINIUM">ALUMINIUM</option>
+	  <option value="TINNED COPPER">TINNED COPPER</option>
+	  <option value="COPPER">COPPER</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[21].specificationType" value="BUSBAR">
+    <input type="hidden" name="panelSpecifications[21].specificationDescription" value="CURRENT DENSITY">2</td>
+    <td>CURRENT DENSITY</td>
+    <td><select name="panelSpecifications[21].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="0.7A/sq.mm">0.7A/sq.mm</option>
+	  <option value="0.75A/sq.mm">0.75A/sq.mm</option>
+	  <option value="0.8A/sq.mm">0.8A/sq.mm</option>
+	  <option value="1A/sq.mm">1A/sq.mm</option>
+	  <option value="1.2A/sq.mm">1.2A/sq.mm</option>
+	  <option value="1.25A/sq.mm">1.25A/sq.mm</option>
+	  <option value="1.4A/sq.mm">1.4A/sq.mm</option>
+	  <option value="1.5A/sq.mm">1.5A/sq.mm</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[22].specificationType" value="BUSBAR">
+    <input type="hidden" name="panelSpecifications[22].specificationDescription" value="EARTHING">3</td>
+    <td>EARTHING</td>
+    <td><select name="panelSpecifications[22].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="ALUMINIUM">ALUMINIUM</option>
+	  <option value="TINNED COPPER">TINNED COPPER</option>
+	  <option value="COPPER">COPPER</option>
+	  <option value="M8 MS BOLTS">M8 MS BOLTS</option>
+	  <option value="GI STRIP">GI STRIP</option>
+	 </select></td>
+  </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[23].specificationType" value="BUSBAR">
+    <input type="hidden" name="panelSpecifications[23].specificationDescription" value="NUMBER OF PHASES">4</td>
+    <td>NUMBER OF PHASES</td>
+    <td><select name="panelSpecifications[23].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="SP / 1PH">SP / 1PH</option>
+	  <option value="SPN / 1PH+N">SPN / 1PH+N</option>
+	  <option value="TP / 3PH">TP / 3PH</option>
+	  <option value="TPN / 3PH+N">TPN / 3PH+N</option>
+	  <option value="FP / 4PH">FP / 4PH</option>
+	 </select></td>
+  </tr>
+</table>
+</div>
+
+
+<div class="popup_rightbox">		
+<table width="200" border="1">
+  <tr>
+    <th width="136" scope="col">&nbsp;</th>
+    <th colspan="2" scope="col">WIRING</th>
+    </tr>
+  <tr>
+    <td><input type="hidden" name="panelSpecifications[24].specificationType" value="WIRING">
+    <input type="hidden" name="panelSpecifications[24].specificationDescription" value="TYPE">1</td>
+    <td>TYPE</td>
+    <td><select name="panelSpecifications[24].specificationValue">
+	  <option selected="true" disabled="disabled">Select</option>
+	  <option value="PVC INSULATED CU WIRE (NORMAL)">PVC INSULATED CU WIRE (NORMAL)</option>
+	  <option value="FRLS">FRLS</option>
+	  <option value="FRLSH">FRLSH</option>
+	 </select></td>
+  </tr>
+  
+</table>
+</div>
+		<div class="project_box4">
+			<div class="button"> 
+				<input type="button" value="Save" onclick="updateEstimationSpecDetails()">
+				<input type="button" value="Cancel" onclick="closeUpadateSpecPopUp()">
+			 </div>
+		</div>
+	</div>
+	</div>
+</div>
+
+</form>

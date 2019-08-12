@@ -24,7 +24,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.abak.entity.Panel;
 import com.abak.entity.PanelDetails;
+import com.abak.entity.PanelSpecification;
 import com.abak.entity.Project;
+import com.abak.model.EstTempModel;
 import com.abak.service.EstSheetService;
 import com.abak.service.ISalesService;
 
@@ -266,6 +268,43 @@ public class EstimationController {
 		System.out.println(sourceID+ "   "+ destinationId);
 		return "ok";
 	}
+	
+	
+	@RequestMapping(params="estimationDetailsSpecPopup",method={RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView estimationDetailsSpecPopup(@RequestParam int panelKey,HttpServletRequest request){
+		HttpSession httpSession = request.getSession();
+		Map<Integer,Panel> panalList = (Map)httpSession.getAttribute("panalList");
+		Panel panel= panalList.get(panelKey);
+		List<PanelSpecification> panelSpecifications = panel.getPanelSpecifications();
+		String target="";
+		if(panel.getPanelSpecifications().size()==0){
+			target="estimationDetailsSpecPopup";
+		}else{
+			target="estimationDetailsSpecPopupNew";
+		}
+		System.out.println(panel.getPanelSpecifications().indexOf(0));
+		ModelAndView modelAndView = new ModelAndView(target);
+		modelAndView.addObject("panel", panel);
+		modelAndView.addObject("panelKey", panelKey);
+		modelAndView.addObject("panelSpecifications", panelSpecifications);
+		return modelAndView;
+	}
+	
+	@RequestMapping(params="estSpecIncoming",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public Map<String,String> secEstSpeccEntery(@ModelAttribute Panel panel,@ModelAttribute EstTempModel estTempModel,
+			HttpServletRequest request,HttpServletResponse response,BindingResult bindingResult){
+		Map<String,String> result = new HashMap<>();
+		HttpSession httpSession= request.getSession();
+		Map<Integer,Panel> panalList = (Map)httpSession.getAttribute("panalList");
+			Panel panels= panalList.get(estTempModel.getPanelKey());
+			panels.setPanelSpecifications(panel.getPanelSpecifications());
+			panel.setPanelId(estTempModel.getPanelKey());
+			panalList.put(estTempModel.getPanelKey(), panels);
+			httpSession.setAttribute("panalListCount", estTempModel.getPanelKey());
+		return result;
+	}
+	
 
 
 }
