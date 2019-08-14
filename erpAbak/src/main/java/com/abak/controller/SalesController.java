@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,12 +24,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import com.abak.entity.Project;
 import com.abak.model.ProjectInformation;
 import com.abak.service.ClientDetailsService;
 import com.abak.service.ISalesService;
 import com.abak.service.UserService;
+import com.abak.utility.AbakConstant;
 import com.abak.validation.SalesValidation;
 
 
@@ -60,28 +67,36 @@ public class SalesController {
 	}
 	
 	
-	@RequestMapping(params="add", method={RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(params="add",headers=("content-type=multipart/*"), method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
-	public Map<String,String> newSalesEntry(@ModelAttribute("project")Project project) {
+	public Map<String,String> newSalesEntry(@RequestParam("file") MultipartFile file,MultipartHttpServletRequest request,@ModelAttribute("project")Project project) {
 		
 		Map<String,String> result = new HashMap<>();
 		List<String> errorList = new ArrayList<>();
 		errorList = validation.validatedSalesEntry(project);
+		String filepath = null ;
+		try {
+            // Get the file and save it somewhere
+            byte[] bytes = file.getBytes();
+            filepath = AbakConstant.UPLOADED_FOLDER + file.getOriginalFilename();
+            Path path = Paths.get(filepath);
+            Files.write(path, bytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 		 
 		 if(errorList.isEmpty()) {
 			 //project.setEnquiryRecDate(new Date());
 			 project.setCreatedOn(new Date());
 			 project.setStatus("New sales entry");
+			 project.setDocumentPathBySalse(filepath);
 			 project.setIsEstimationCreated(false);
 			 project.setIsQuotationPresent(false);
 			 salesService.saveProject(project);
 			 errorList.add("New sales Entry has been save successfully!");
 			 //result.addAll(errorList);
 			 result.put("msg","New sales Entry has been save successfully!!!");
-			 
-			 
 		 }
-		 
 		 
 		return result;
 	}

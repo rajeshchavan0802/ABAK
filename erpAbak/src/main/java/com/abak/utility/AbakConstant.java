@@ -8,6 +8,6 @@ public interface AbakConstant {
 	public final String DOCXExtention=".docx";
 	public final String SUBReportDIR="SUBREPORT_DIR";
 	public final String JasperReport= "JasperReport";
-	
+	public static String UPLOADED_FOLDER = "C:\\report\\";
 	
 }

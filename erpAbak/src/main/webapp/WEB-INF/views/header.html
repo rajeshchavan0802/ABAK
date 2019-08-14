@@ -20,10 +20,12 @@
 		<link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 		<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 		
+		 
+		
 		<!-- Datatable Basic -->
-		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css"/>
+		<!-- <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css"/>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
 		
 		
 		
@@ -39,28 +41,18 @@
 	<script>
 	
 	
-	
-				$( "#estimationIndex" ).click(function() {
-					  alert( "...........estimationIndex" );
-					  $('#example').DataTable();
-					});
-	
-	
-      			$('.sidebar-menu').SidebarNav();
-     
+	$(document).ready(function() {
+		 alert('.....ok 11...');
+			$('#example').DataTable();
+		} ); 
+	 
 				function getpage(page){
 					$("#formContent").empty();
-					var resData = doAjaxCall(page, 'post', '', false, 'json');
+					var resData = doAjaxCall(page, 'post', '', false, 'application/json');
 					$("#formContent").html(resData);
+					
 				}
-	 
-	
-				$(document).ready(function() {
-					alert("EstimationIndex opening........");
-					$('#example').DataTable();
-				} );
-	
-			
+	  
 				 function doAjaxCall(url, reqType, data, async, dataType){
 				   
 				  var result='';

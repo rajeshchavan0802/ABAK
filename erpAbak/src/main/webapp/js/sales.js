@@ -54,15 +54,21 @@ function veiwProjectInfo(projectId){
         }, 2000); */
     }
 
-    function doAjaxCall(url, reqType, data, async, dataType){
+    
+    function doAjaxCallSales(url, reqType, data, async, dataType,enctype){
      
     	var result='';
     	result =$.ajax({
     			url : url,
     			data : data,
+    			enctype: enctype,
     			type : reqType,
     			async : async,
     			dataType : dataType,
+    			processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
     			success : function(response) {
     				
     				//result = response;
@@ -78,8 +84,18 @@ function veiwProjectInfo(projectId){
     
     
     function addSalesDetails(){
-	   	var data = $("#projectDetailsSave").serialize();
-	   	var resData = doAjaxCall('sales?add', 'post', data, false, 'json');
+    	
+    	
+	   //var data = $("#projectDetailsSave").serialize();
+	   	
+    	// Get form
+        var form = $('#projectDetailsSave')[0];
+
+		// Create an FormData object 
+        var data = new FormData(form);
+	   	
+	   	
+	   	var resData = doAjaxCallSales('sales?add', 'post', data, false, '','multipart/form-data');
 	   	var res = JSON.parse(resData);
 	   	$("#mainSalesMsg tbody").append("<div class='alert alert-success'>"+res.msg+"</div>" );
 	}
