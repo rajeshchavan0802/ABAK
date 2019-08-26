@@ -69,37 +69,58 @@ public class SalesController {
 	
 	@RequestMapping(params="add",headers=("content-type=multipart/*"), method={RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
-	public Map<String,String> newSalesEntry(@RequestParam("file") MultipartFile file,MultipartHttpServletRequest request,@ModelAttribute("project")Project project) {
-		
-		Map<String,String> result = new HashMap<>();
-		List<String> errorList = new ArrayList<>();
-		errorList = validation.validatedSalesEntry(project);
-		String filepath = null ;
-		try {
-            // Get the file and save it somewhere
-            byte[] bytes = file.getBytes();
-            filepath = AbakConstant.UPLOADED_FOLDER + file.getOriginalFilename();
-            Path path = Paths.get(filepath);
-            Files.write(path, bytes);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-		 
-		 if(errorList.isEmpty()) {
-			 //project.setEnquiryRecDate(new Date());
-			 project.setCreatedOn(new Date());
-			 project.setStatus("New sales entry");
-			 project.setDocumentPathBySalse(filepath);
-			 project.setIsEstimationCreated(false);
-			 project.setIsQuotationPresent(false);
-			 salesService.saveProject(project);
-			 errorList.add("New sales Entry has been save successfully!");
-			 //result.addAll(errorList);
-			 result.put("msg","New sales Entry has been save successfully!!!");
-		 }
-		 
-		return result;
+	public Map<String,String> newSalesEntry(@RequestParam("file") MultipartFile file,MultipartFile file1,MultipartFile file2,
+	MultipartFile file3,MultipartFile file4,MultipartHttpServletRequest request,@ModelAttribute("project")Project project) {
+
+	Map<String,String> result = new HashMap<>();
+	List<String> errorList = new ArrayList<>();
+	//errorList = validation.validatedSalesEntry(project);
+	String filepath=null;
+	String filepath1=null;
+	String filepath2=null;
+	String filepath3=null;
+	String filepath4= null ;
+	String finalFilePath= null;
+	try {
+	            // Get the file and save it somewhere
+	            byte[] bytes = file.getBytes();
+	            filepath = AbakConstant.UPLOADED_FOLDER + file.getOriginalFilename();
+	            filepath1 =AbakConstant.UPLOADED_FOLDER + file1.getOriginalFilename();
+	            filepath2 =AbakConstant.UPLOADED_FOLDER + file2.getOriginalFilename();
+	            filepath3 =AbakConstant.UPLOADED_FOLDER + file3.getOriginalFilename();
+	            filepath4 =AbakConstant.UPLOADED_FOLDER + file4.getOriginalFilename();
+	            finalFilePath =filepath+";"+filepath1+";"+filepath2+";"+filepath3+";"+filepath4;
+	            Path path = Paths.get(filepath);
+	            Path path1 = Paths.get(filepath1);
+	            Path path2 = Paths.get(filepath2);
+	            Path path3 = Paths.get(filepath3);
+	            Path path4 = Paths.get(filepath4);
+	            Files.write(path, bytes);
+	            Files.write(path1, bytes);
+	            Files.write(path2, bytes);
+	            Files.write(path3, bytes);
+	            Files.write(path4, bytes);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+
+	if(errorList.isEmpty()) {
+	//project.setEnquiryRecDate(new Date());
+	project.setCreatedOn(new Date());
+	project.setStatus("New sales entry");
+	project.setDocumentPathBySalse(finalFilePath);
+	project.setIsEstimationCreated(false);
+	project.setIsQuotationPresent(false);
+	salesService.saveProject(project);
+	errorList.add("New sales Entry has been save successfully!");
+	//result.addAll(errorList);
+	result.put("msg","New sales Entry has been save successfully!!!");
 	}
+
+	return result;
+	}
+	
+	 
 	
 	@RequestMapping(params="viewPendingSalesOrder", method={RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView viewSalesOrder() {

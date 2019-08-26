@@ -56,9 +56,17 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 	 	
 	 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+			
 			<beans:property name="url" value="jdbc:mysql://localhost:3306/abak"/>
 			<beans:property name="username" value="root" />
 			<beans:property name="password" value="root" />
+			
+			
+			<!-- <beans:property name="url" value="jdbc:mysql://ec2-3-15-206-178.us-east-2.compute.amazonaws.com:3306/abak"/>
+			<beans:property name="username" value="rc" />
+			<beans:property name="password" value="rc" /> -->
+			
+			
 		</beans:bean>
 		<beans:bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 			<beans:property name="dataSource" ref="dataSource" />
@@ -90,6 +98,12 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 			<!-- setting maximum upload size -->
 			<beans:property name="maxUploadSize" value="7000000" />
 		 </beans:bean>
+		 
+		 <interceptors>
+	     <beans:bean id="authenticationInterceptor" class="com.abak.utility.AuthenticationInterceptor"></beans:bean>
+ 		 </interceptors>
+		 
+		
  
 
 </beans:beans>

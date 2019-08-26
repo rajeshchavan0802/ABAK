@@ -4,83 +4,17 @@
 <title>ERP</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		 
-		<script type="text/javascript" src="js/common.js"></script>
-		<script type="text/javascript" src="js/sales.js"></script>
-		<script type="text/javascript" src="js/estimation.js"></script>
-		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+
+		<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/> -->
 		
-		<!-- <script src="js/jquery-1.11.1.min.js"></script> -->
-		<script src="js/bootstrap.js"></script>
-		<script src='js/SidebarNav.min.js' type='text/javascript'></script>
-		
-		 
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css"/>
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
 		<link href="css/font-awesome.css" rel="stylesheet"> 
 		<link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
 		<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 		
-		
-		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>  
+		<!-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> -->
 		 
-		
-		<!-- Datatable Basic -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css"/>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
-		
-		
-		
-		<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css"/>
-		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css"/>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.semanticui.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script> -->
-
-	
-	
-	<script>
-	
-	
-	$(document).ready(function() {
-		  
-			$('#example').DataTable();
-		} ); 
-	 
-				function getpage(page){
-					$("#formContent").empty();
-					var resData = doAjaxCall(page, 'post', '', false, 'application/json');
-					$("#formContent").html(resData);
-					
-				}
-	  
-				 function doAjaxCall(url, reqType, data, async, dataType){
-				   
-				  var result='';
-				  result =$.ajax({
-				  url : url,
-				  data : data,
-				  type : reqType,
-				  async : async,
-				  dataType : dataType,
-				  success : function(response) {
-				  
-				  //result = response;
-				  },
-				  error : function(xhr, ajaxOptions, thrownError) {
-				
-				  } 
-				  }).responseText;
-				  
-				  return result;
-				  
-				  }
-	
-	
-	</script>
  
 </head> 
 <body>
@@ -108,7 +42,7 @@
 							</a>
 							<ul class="dropdown-menu drp-mnu">
 								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
-								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+								<li> <a href="logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
 							</ul>
 						</li>
 					</ul>
@@ -193,4 +127,51 @@
 
 	
 </body>
+
+		<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src='js/SidebarNav.min.js' type='text/javascript'></script>
+		<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/sales.js"></script>
+		<script type="text/javascript" src="js/estimation.js"></script>
+		
+		<script>
+	 
+				function getpage(page){
+					$("#formContent").empty();
+					var resData = doAjaxCall(page, 'post', '', false, 'application/json');
+					$("#formContent").html(resData);
+					
+				}
+	  
+				 function doAjaxCall(url, reqType, data, async, dataType){
+				   
+				  var result='';
+				  result =$.ajax({
+				  url : url,
+				  data : data,
+				  type : reqType,
+				  async : async,
+				  dataType : dataType,
+				  success : function(response) {
+				  
+				  //result = response;
+				  },
+				  error : function(xhr, ajaxOptions, thrownError) {
+				
+				  } 
+				  }).responseText;
+				  
+				  return result;
+				  
+				  }
+	
+	
+		</script>
+
+
+
+
+
 </html>
