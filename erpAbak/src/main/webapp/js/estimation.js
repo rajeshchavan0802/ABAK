@@ -2,6 +2,7 @@ var pdcount=0;
 var groupCount = 1;
 var panalDetailsDelIDs    = '';
 var panalDetailsDelGroups = '';
+var panalDelIDs    = '';
 
  function getPanelDetails(panelKey,viewType){
 
@@ -345,6 +346,8 @@ var panalDetailsDelGroups = '';
 		 
 	 }
  
+	 
+	 //estimation final save 
 		 function saveFinalEstimation(){
 			 
 			 alert("saveFinalEstimation..........");
@@ -449,6 +452,13 @@ var panalDetailsDelGroups = '';
 				 }
 			
 			
-			
-			
- 
+				 function getPanelDelete(x,panalId){
+					 	panalDelIDs    += panalId+'';
+						 $(x).closest('tr').remove(); 
+					}
+				 
+				 
+				 
+				 
+				 
+				 

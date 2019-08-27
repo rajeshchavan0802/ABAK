@@ -57,6 +57,7 @@ public class Panel implements java.io.Serializable,Cloneable {
 	private Double grandRounedTotal;
 	private Double negotiatedPrice;
 	private Double ebonPrize;
+	private Double totalPanelCost;
 	private List<PanelAdditionalComponent> panelAdditionalComponents = new ArrayList<PanelAdditionalComponent>(0);
 	private List<PanelDetails> panelDetailses = new ArrayList<PanelDetails>(0);
 	private List<PanelSpecification> panelSpecifications = new ArrayList<>(0);
@@ -340,6 +341,24 @@ public class Panel implements java.io.Serializable,Cloneable {
 
 	public void setEbonPrize(Double ebonPrize) {
 		this.ebonPrize = ebonPrize;
+	}
+
+
+	
+	@Column(name = "totalPanel_cost", precision = 22, scale = 0)
+	public Double getTotalPanelCost() {
+		return totalPanelCost;
+	}
+
+	public void setTotalPanelCost() {
+		  if(netTotal!=null && quntity!=null) { 
+			  this.totalPanelCost = netTotal *quntity; 
+		  } 
+	}
+	
+	
+	public void setTotalPanelCost(Double totalPanelCost) {
+			this.totalPanelCost = totalPanelCost;
 	}
 
 	@Override

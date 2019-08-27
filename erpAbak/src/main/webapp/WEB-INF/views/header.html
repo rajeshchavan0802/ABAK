@@ -137,7 +137,14 @@
 		<script type="text/javascript" src="js/estimation.js"></script>
 		
 		<script>
-	 
+	 	
+		
+		
+				$(document).ready(function() {
+					getpage('sales?viewPendingSalesOrder');
+				} );
+				
+				
 				function getpage(page){
 					$("#formContent").empty();
 					var resData = doAjaxCall(page, 'post', '', false, 'application/json');
