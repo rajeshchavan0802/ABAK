@@ -18,11 +18,15 @@
 				 <param-value>/WEB-INF/application-context.xml</param-value>
 			 </init-param>
 		<load-on-startup>1</load-on-startup>
+		
+		
 	</servlet>
 	
 	<listener>
     <listener-class>com.abak.utility.ApplicationInitializer</listener-class>
   	</listener>
+  
+ 
   
 	<servlet-mapping>
 		<servlet-name>erpAbak</servlet-name>

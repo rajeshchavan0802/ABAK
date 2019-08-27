@@ -1,5 +1,5 @@
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-
+<!-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
 <script type="text/javascript">
 
 
@@ -170,6 +170,9 @@ function caloverHeadCost(){
 			<input type="number" name="quntity" value="${panel.quntity}">
 			<input type="hidden" id="panelId" name="panelId" value="${panel.panelId}" />
 			
+			<input type="hidden" name="panalDetailsDelIDs" id="panalDetailsDelIDs" value="aaaaa" />
+			<input type="hidden" name="panalDetailsDelGroups" id="panalDetailsDelGroups" value="aaaaa" />
+			
 		</div>
 		
 			<#assign x = 0>
@@ -187,8 +190,13 @@ function caloverHeadCost(){
 			</#if>
 			
 			<#if list.feederSubtype??>
-			<#assign feederSubtype=list.feederSubtype  >
+			<#assign feederSubtype=list.feederSubtype>
 			</#if>
+			
+			<#if list.typeOfFeeder??>
+			<#assign groupName=list.groupName>
+			</#if>
+			
 			
 			</#list>
 			
@@ -222,12 +230,12 @@ function caloverHeadCost(){
 								<#if feederSubtype!="">
 									<th colspan="10"><input type="text" name="panelDetailses[${x}].feederSubtype" style="color: #000000;" value="${feederSubtype}" />
 									<img src="images/plus.png" onclick="repeatEstimation()" height="35" width="35"></img>
-									<img src="images/minus.png" onclick="removeMainTemplate(this)" height="35" width="35"></img>
+									<img src="images/minus.png" onclick="removeMainTemplate(this,'${groupName}')" height="35" width="35"></img>
 									</th>
 								<#else>
 									<th colspan="10"><input type="text" name="panelDetailses[${x}].feederSubtype" style="color: #000000;" />
 									<img src="images/plus.png" onclick="repeatEstimation()" height="35" width="35"></img>
-									<img src="images/minus.png" onclick="removeMainTemplate(this)" height="35" width="35"></img>
+									<img src="images/minus.png" onclick="removeMainTemplate(this,'${groupName}')" height="35" width="35"></img>
 									</th>
 								</#if>
 								
@@ -267,7 +275,13 @@ function caloverHeadCost(){
 							<td><input type="text" name="panelDetailses[${x}].unitRate" value="${list.unitRate}" id="panelDetailes${x}unitRate" size="7"></td>
 							<td><input type="text" name="panelDetailses[${x}].total" value="${list.total}" id="panelDetailes${x}total" class="caltotalEbon" size="7"></td>
 							<td><img src="images/plus.png" onclick="repeatrow('first_table${y}','groupName${y}')" height="35" width="35"></img>
-							<img src="images/minus.png" height="35" width="35" onclick="this.parentElement.parentElement.remove();"></img></td>
+							
+							<#if (list.panelDetailsId)??>
+								<img src="images/minus.png" height="35" width="35" onclick="removePanalDetails(this,'${list.panelDetailsId}')"></img></td>
+							<#else>
+								<img src="images/minus.png" height="35" width="35" onclick="removePanalDetails(this,'')"></img></td>
+							</#if>
+							
 						</tr>
 						<#assign x ++>
 						</#list>

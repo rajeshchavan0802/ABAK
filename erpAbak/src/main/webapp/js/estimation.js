@@ -1,5 +1,7 @@
 var pdcount=0;
 var groupCount = 1;
+var panalDetailsDelIDs    = '';
+var panalDetailsDelGroups = '';
 
  function getPanelDetails(panelKey,viewType){
 
@@ -49,6 +51,9 @@ var groupCount = 1;
 
  function updateEstimationDetails(){
 	   	  
+	 	$("#panalDetailsDelIDs").val(panalDetailsDelIDs);
+	 	$("#panalDetailsDelGroups").val(panalDetailsDelGroups);
+	 
 	   	var panelId = $("#panelId").val();
 	   	var data = $("#estDetailsUpdate").serialize();
 	   	var resData = doAjaxCall('estimation?savePanalEntryInSession', 'post', data, false, 'json');
@@ -77,13 +82,31 @@ var groupCount = 1;
    	var data = $("#estDetails").serialize();
    	var resData = doAjaxCall('estimation?savePanalEntryInSession', 'post', data, false, 'json');
    	var res = JSON.parse(resData);
+   	var w = "w"
    	var panelKey = res.panelKey;
    	$("#tempEstimationPopUp").empty();
    	$("#tempEstimationPopUp").html('');
    	$( "#estDetails" ).remove();
    	
+   	
+   	$('#mainEstTbl').dataTable().fnAddData( [
+   		'<td id="panelKey'+panelKey+'">'+res.panelKey+'</td>',
+   		'<td id="description'+panelKey+'">'+res.description+'</td>',
+   		'<td id="qty'+panelKey+'">'+res.qty+'</td>',
+		'<td id="unitRate'+panelKey+'">'+res.unitRate+'</td>',
+		'<td id="total'+panelKey+'">'+res.total+'</td>',
+		'<td id="hight'+panelKey+'">'+res.hight+'</td>',
+		'<td id="width'+panelKey+'">'+res.width+'</td>',
+		'<td id="defth'+panelKey+'">'+res.defth+'</td>',
+	    "<td><img src='images/tick.png' height='35' width='30'onclick='getPanelDetails("+res.panelKey+','+'"'+'w'+'"'+")'></td>",
+	    "<td><img src='images/tick.png' height='35' width='30' onclick='getPanelSpecDetails("+res.panelKey+")'></td>" ,
+	    "<td><i class='fa fa-trash fa-4' ></i></td>"
+	    ] );
+	
+   	/*
+   	
    	$("#mainEstTbl tbody").append(
-   		  '<tr>' +
+   		  '<tr role="row">' +
    	   		'<td id="panelKey'+panelKey+'">'+res.panelKey+'</td>' +
    			'<td id="description'+panelKey+'">'+res.description+'</td>' +
    			'<td id="qty'+panelKey+'">'+res.qty+'</td>' +
@@ -92,10 +115,10 @@ var groupCount = 1;
    			'<td id="hight'+panelKey+'">'+res.hight+'</td>' +
    			'<td id="width'+panelKey+'">'+res.width+'</td>' +
    			'<td id="defth'+panelKey+'">'+res.defth+'</td>' +
-   	        "<td><img src='images/tick.png' height='35' width='30'onclick='getPanelDetails("+res.panelKey+")'></td>" +
-   	    	"<td><img src='images/tick.png' height='35' width='30'></td>" +
+   	        "<td><img src='images/tick.png' height='35' width='30'onclick='getPanelDetails("+res.panelKey+','+'"'+'w'+'"'+")'></td>" +
+   	        "<td><img src='images/tick.png' height='35' width='30' onclick='getPanelSpecDetails("+res.panelKey+")'></td>" +
    	      "</tr>"
-   	  );
+   	  );*/
    	
    	document.getElementById('estDetails').reset();
 
@@ -157,7 +180,7 @@ var groupCount = 1;
 				'<th colspan="10">'+
 				'<input type="text" name="panelDetailses['+pdcount+'].feederSubtype" style="color: #000000;" />'+
 				'<img src="images/plus.png" height="35" width="35" onclick="repeatEstimation()"></img>'+
-				'<img src="images/minus.png" height="35" width="35" onclick="removeMainTemplate(this)"></img></th>'+
+				'<img src="images/minus.png" height="35" width="35" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()"></img></th>'+
 			'</tr>'+
 			'<tr>'+
 				'<th scope="col">Description</th>'+
@@ -216,10 +239,18 @@ var groupCount = 1;
 	}
 	
 	
-	function removeMainTemplate(x){
+	function removeMainTemplate(x,groupName){
 		groupCount--;
 		x.parentElement.parentElement.parentElement.parentElement.remove();
-		alert('Rajesh');
+		panalDetailsDelGroups += groupName +',';
+		alert('removing Main Template');
+		
+		 calEbonPrize();
+		 calTotCompCost();
+		 callaborCost();
+		 caloverHeadCost();
+		 calculateRemainingAmt();
+		
 	}	
 	
 	 function getEstimation(){
@@ -300,7 +331,8 @@ var groupCount = 1;
 	 
 	 function openReadOrWriteView(projectId, viewType){
 		 
-		  
+		   panalDetailsDelIDs    = '';
+		   panalDetailsDelGroups = '';
 			
  		 var data= {
 	 				 	projectId: projectId,
@@ -374,4 +406,49 @@ var groupCount = 1;
 				clearEnquiry();
 			}
 	 
+			
+			
+			function getPanelSpecDetails(panelKey){
+				$("#tempEstimationSpecPopUp").empty();
+				$("#tempEstimationSpecPopUp").html('');
+
+				var data = 'panelKey='+ panelKey;
+				var resData = doAjaxCall('estimation?estimationDetailsSpecPopup', 'post', data, false, 'json');
+				$("#tempEstimationSpecPopUp").append(resData);
+				window.location = "#popup1";
+				 }
+				 
+				function updateEstimationSpecDetails(){
+				var panelId = $("#panelId").val();
+				    var data = $("#estDetailsSpecUpdate").serialize();
+				    var resData = doAjaxCall('estimation?estSpecIncoming', 'post', data, false, 'json');
+				    var res = JSON.parse(resData);
+				    $("#tempEstimationSpecPopUp").empty();
+				    $("#tempEstimationSpecPopUp").html('');
+				    $( "#estDetailsSpecUpdate" ).remove();
+				}
+
+				 function closeUpadateSpecPopUp(){
+				$("#tempEstimationSpecPopUp").empty();
+				$("#tempEstimationSpecPopUp").html('');
+				  $( "#estDetailsSpecUpdate" ).remove();
+				}
+			
+			
+				 
+				 function removePanalDetails(x,panalId){
+					 
+					 x.parentElement.parentElement.remove();
+					 panalDetailsDelIDs += panalId+',';
+					 calEbonPrize();
+					 calTotCompCost();
+					 callaborCost();
+					 caloverHeadCost();
+					 calculateRemainingAmt();
+					 
+				 }
+			
+			
+			
+			
  

@@ -107,6 +107,7 @@ public class UserController {
 	}
 	
 	private UserEntity PrepareCreateUserModel(UserModel userModel){
+		
 		UserEntity userEntity = new UserEntity();
 		userEntity.setFirstName(userModel.getFirstName());
 		userEntity.setLastName(userModel.getLastName());
@@ -122,5 +123,22 @@ public class UserController {
 		userEntity.setCreatedBy(userModel.getCreatedBy());
 		userEntity.setCreatedDatetime(userModel.getCreatedDatetime());
 		return userEntity;
+		
 	}
+	
+	
+	@RequestMapping(value="/logout",method=RequestMethod.GET)
+	public ModelAndView logoutUser(HttpServletRequest request,HttpServletResponse response){
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		System.out.println(session.getId());
+		String target ="adminLogin";
+		ModelAndView modelAndView = new ModelAndView(target);
+		modelAndView.addObject(target);
+		return modelAndView;
+	}
+	 
+	
+	
 }

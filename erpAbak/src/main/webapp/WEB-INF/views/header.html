@@ -4,53 +4,17 @@
 <title>ERP</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/sales.js"></script>
-<script type="text/javascript" src="js/estimation.js"></script>
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-
-
-<!-- Custom CSS -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-
-<!-- font-awesome icons CSS -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
-<!-- //font-awesome icons CSS-->
-
-<!-- side nav css file -->
-<link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
-<!-- //side nav css file -->
-<script>
-
-	$(document).ready(function(){
-
-	 function doAjaxCall(url, reqType, data, async, dataType){
-	   
-	  var result='';
-	  result =$.ajax({
-	  url : url,
-	  data : data,
-	  type : reqType,
-	  async : async,
-	  dataType : dataType,
-	  success : function(response) {
-	  
-	  //result = response;
-	  },
-	  error : function(xhr, ajaxOptions, thrownError) {
-	
-	  } 
-	  }).responseText;
-	  
-	  return result;
-	  
-	  }
-
-
-</script>
+		<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/> -->
+		
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css"/>
+		<link href="css/style.css" rel='stylesheet' type='text/css' />
+		<link href="css/font-awesome.css" rel="stylesheet"> 
+		<link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
+		<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+		
+		<!-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> -->
+		 
  
 </head> 
 <body>
@@ -78,19 +42,23 @@
 							</a>
 							<ul class="dropdown-menu drp-mnu">
 								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
-								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+								<li> <a href="logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
 							</ul>
 						</li>
 					</ul>
 				</div>		
 			</div>
 		</div>
+	</div>	
 		<!-- //header-ends -->
 		
 	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
-		<!--left-fixed -navigation-->
-		<aside class="sidebar-left">
+		
+<!--left-fixed -navigation-->
+	<aside class="sidebar-left">
+	
       <nav class="navbar navbar-inverse">
+          
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -99,76 +67,111 @@
             <span class="icon-bar"></span>
             </button>
           </div>
+          
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            
+            <!-- left Side menu -->
+            
             <ul class="sidebar-menu">
              
-               
-			   <li class="treeview">
-                <a  onclick="getpage('sales?viewPendingSalesOrder')">
-               <i class="fa fa-angle-right text-red"></i>  <span>View Pending Orders</span>
-                </a>
-              </li> 
 			  <li class="treeview">
-                <a  onclick="getpage('sales?newSalseEntry')">
-               <i class="fa fa-angle-right text-red"></i>  <span>New Sales Orders</span>
-                </a>
+              <a  onclick="getpage('sales?viewPendingSalesOrder')">
+              <i class="fa fa-angle-right text-red"></i>  
+              <span>View Pending Orders</span>
+              </a>
+              </li> 
+              
+			  <li class="treeview">
+              <a  onclick="getpage('sales?newSalseEntry')">
+              <i class="fa fa-angle-right text-red"></i> 
+              <span>New Sales Orders</span>
+              </a>
               </li>
-              <li class="treeview">
-                <a  onclick="getpage('estimation?index')">
-               <i class="fa fa-angle-right text-red"></i>  <span>Estimation</span>
-                </a>
+              
+              <li class="treeview" id="estimationIndex">
+              <a  onclick="getpage('estimation?index')" >
+              <i class="fa fa-angle-right text-red"></i>  <span>Estimation</span>
+              </a>
               </li>
               
               <li class="treeview">
-                <a  onclick="getpage('estimation?estimationCloneIndex')">
-               <i class="fa fa-angle-right text-red"></i>  <span>Estimation Cloning</span>
-                </a>
+              <a  onclick="getpage('estimation?estimationCloneIndex')">
+              <i class="fa fa-angle-right text-red"></i> 
+              <span>Estimation Cloning</span>
+              </a>
               </li>
               
               <li class="treeview">
-                <a  onclick="getpage('quotation?index')">
-               	<i class="fa fa-angle-right text-red"></i>  <span>Quotation Generation</span>
-                </a>
+              <a  onclick="getpage('quotation?index')">
+              <i class="fa fa-angle-right text-red"></i> 
+              <span>Quotation Generation</span>
+              </a>
               </li>
                            
 			 </ul>
+			 
+			 
           </div>
           <!-- /.navbar-collapse -->
-      </nav>
-    </aside>
+          
+          
+	      </nav>
+	    </aside>
 	</div>
-		<!--left-fixed -navigation-->
-		</div>
+<!--left-fixed -navigation-->
+
+</div>
 	
-		<div id="page_right_content">
-		<!-- // <p> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-		The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-		<p> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-		The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-		</div>--><!--page_right_content-->
+		<div id="page_right_content"></div>
+		<div id="formContent"></div>
 
-		</div>
-		
-
-	 <!-- js -->
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<!-- side nav js -->
-	  <script src="js/bootstrap.js"> </script>
-
-	<script src='js/SidebarNav.min.js' type='text/javascript'></script>
-	<script>
-      $('.sidebar-menu').SidebarNav()
-    </script>
-	
-    <div id="formContent"></div>
-
-	<script>
-		function getpage(page){
-			$("#formContent").empty();
-			var resData = doAjaxCall(page, 'post', '', false, 'json');
-			$("#formContent").html(resData);
-		}
-	</script>
 	
 </body>
+
+		<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src='js/SidebarNav.min.js' type='text/javascript'></script>
+		<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/sales.js"></script>
+		<script type="text/javascript" src="js/estimation.js"></script>
+		
+		<script>
+	 
+				function getpage(page){
+					$("#formContent").empty();
+					var resData = doAjaxCall(page, 'post', '', false, 'application/json');
+					$("#formContent").html(resData);
+					
+				}
+	  
+				 function doAjaxCall(url, reqType, data, async, dataType){
+				   
+				  var result='';
+				  result =$.ajax({
+				  url : url,
+				  data : data,
+				  type : reqType,
+				  async : async,
+				  dataType : dataType,
+				  success : function(response) {
+				  
+				  //result = response;
+				  },
+				  error : function(xhr, ajaxOptions, thrownError) {
+				
+				  } 
+				  }).responseText;
+				  
+				  return result;
+				  
+				  }
+	
+	
+		</script>
+
+
+
+
+
 </html>

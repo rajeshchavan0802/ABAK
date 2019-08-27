@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Transient;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -24,9 +25,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.abak.entity.Panel;
 import com.abak.entity.PanelDetails;
+import com.abak.entity.PanelSpecification;
 import com.abak.entity.Project;
+import com.abak.model.EstTempModel;
 import com.abak.service.EstSheetService;
 import com.abak.service.ISalesService;
+import com.abak.utility.AbakConstant;
 
 
 
@@ -78,6 +82,7 @@ public class EstimationController {
 		session.setAttribute("project", project1);
 		session.setAttribute("panalList", panalList);
 		session.setAttribute("panalListCount", panalListCount);
+		
 		ModelAndView modelAndView = new ModelAndView("new_estimation");
 		modelAndView.addObject("project", project);
 		return modelAndView;
@@ -85,7 +90,9 @@ public class EstimationController {
 	
 	
 	@RequestMapping(params="openEstimationDetailsPopUp",method={RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView getEstimationDetailsPopUp(){
+	public ModelAndView getEstimationDetailsPopUp(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		session.setAttribute("editType", "create");
 		ModelAndView modelAndView = new ModelAndView("newEstimationPopUp");
 		return modelAndView;
 	}
@@ -105,6 +112,7 @@ public class EstimationController {
 		HttpSession httpSession= request.getSession();
 		//Project projectSession = (Project)httpSession.getAttribute("project");
 		Map<Integer,Panel> panalList = (Map)httpSession.getAttribute("panalList");
+		String editType = (String)httpSession.getAttribute("editType");
 		Integer panalListCount;
 		
 		if(panel.getPanelId()==null) {
@@ -128,6 +136,20 @@ public class EstimationController {
 		result.put("width","");
 		result.put("defth","");
 		result.put("panelKey",panalListCount.toString());
+		
+		//Process here if delete action present
+		String panalDetailsDelIDstemp =null;
+		if(panel.getPanalDetailsDelIDs()!=null)
+		panalDetailsDelIDstemp = (panel.getPanalDetailsDelIDs().equals( AbakConstant.BlanckString) ? null : panel.getPanalDetailsDelIDs());
+		
+		String panalDetailsDelGroupstemp = null;
+		if(panel.getPanalDetailsDelGroups()!=null)
+		panalDetailsDelGroupstemp = (panel.getPanalDetailsDelGroups().equals(AbakConstant.BlanckString) ? null : panel.getPanalDetailsDelGroups());	
+		
+		if(editType.equalsIgnoreCase("update") && (panalDetailsDelIDstemp!=null || panalDetailsDelGroupstemp != null))
+		estSheetService.deleteFromPanelDetails(panel.getPanelId(), panalDetailsDelIDstemp, panalDetailsDelGroupstemp);
+		
+		
 		return result;
 	}
 	
@@ -154,6 +176,8 @@ public class EstimationController {
 	public ModelAndView getEstimationDetailsPopUp(@RequestParam String panelKey, @RequestParam String viewType,HttpServletRequest request){
 		
 		ModelAndView modelAndView ;
+		HttpSession session = request.getSession();
+		session.setAttribute("editType", "update");
 		
 		if(viewType.equalsIgnoreCase("w")) {
 			modelAndView = new ModelAndView("estimationDetailsPopUp");
@@ -224,6 +248,8 @@ public class EstimationController {
 		session.setAttribute("panalList", panalList);
 		session.setAttribute("panalListCount", project.getPanels().size());
 		
+		
+		
 		ModelAndView modelAndView = null;
 		
 		if(viewType.equalsIgnoreCase("w")) {
@@ -266,6 +292,43 @@ public class EstimationController {
 		System.out.println(sourceID+ "   "+ destinationId);
 		return "ok";
 	}
+	
+	
+	@RequestMapping(params="estimationDetailsSpecPopup",method={RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView estimationDetailsSpecPopup(@RequestParam int panelKey,HttpServletRequest request){
+		HttpSession httpSession = request.getSession();
+		Map<Integer,Panel> panalList = (Map)httpSession.getAttribute("panalList");
+		Panel panel= panalList.get(panelKey);
+		List<PanelSpecification> panelSpecifications = panel.getPanelSpecifications();
+		String target="";
+		if(panel.getPanelSpecifications().size()==0){
+			target="estimationDetailsSpecPopup";
+		}else{
+			target="estimationDetailsSpecPopupNew";
+		}
+		System.out.println(panel.getPanelSpecifications().indexOf(0));
+		ModelAndView modelAndView = new ModelAndView(target);
+		modelAndView.addObject("panel", panel);
+		modelAndView.addObject("panelKey", panelKey);
+		modelAndView.addObject("panelSpecifications", panelSpecifications);
+		return modelAndView;
+	}
+	
+	@RequestMapping(params="estSpecIncoming",method={RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public Map<String,String> secEstSpeccEntery(@ModelAttribute Panel panel,@ModelAttribute EstTempModel estTempModel,
+			HttpServletRequest request,HttpServletResponse response,BindingResult bindingResult){
+		Map<String,String> result = new HashMap<>();
+		HttpSession httpSession= request.getSession();
+		Map<Integer,Panel> panalList = (Map)httpSession.getAttribute("panalList");
+			Panel panels= panalList.get(estTempModel.getPanelKey());
+			panels.setPanelSpecifications(panel.getPanelSpecifications());
+			panel.setPanelId(estTempModel.getPanelKey());
+			panalList.put(estTempModel.getPanelKey(), panels);
+			httpSession.setAttribute("panalListCount", estTempModel.getPanelKey());
+		return result;
+	}
+	
 
 
 }

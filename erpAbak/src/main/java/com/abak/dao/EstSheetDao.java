@@ -7,6 +7,7 @@ import com.abak.entity.Panel;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projection;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.abak.entity.Project;
+import com.abak.utility.AbakConstant;
 
 @Repository
 public class EstSheetDao {
@@ -75,5 +77,57 @@ public class EstSheetDao {
 		Session session = sessionFactory.getCurrentSession();
 		session.evict(panel);
 	}
+	
+	public boolean deleteFromPanelDetails(Integer panelId,Integer[] panelDetailsIdArray,String[] groupName) {
+		
+		boolean result = false;
+		String detailsIdCriteria="";
+		String groupNameCriteria="";
+		
+		if(panelDetailsIdArray!=null || groupName !=null) {
+			
+			if(panelDetailsIdArray!=null) {
+				for(int i = 0; i<panelDetailsIdArray.length ; i++) {
+					if(i==0) {
+						detailsIdCriteria = detailsIdCriteria +  panelDetailsIdArray[i].toString();
+					}else {
+						
+						detailsIdCriteria = detailsIdCriteria + "," + panelDetailsIdArray[i].toString();
+					}
+				}
+			}
+			
+			
+			if(groupName!=null) {
+				for(int i = 0; i<groupName.length ; i++) {
+					if(i==0) {
+						groupNameCriteria = groupNameCriteria +"'"+ groupName[i].toString()+"'";
+					}else {
+						groupNameCriteria = groupNameCriteria +",'" + groupName[i].toString()+"'";
+					}
+				}
+				
+			}
+			
+			String sql = "delete from panel_details  where panel_id="+panelId;
+			groupNameCriteria = "group_Name in (" +(groupNameCriteria.equals("")?null:groupNameCriteria ) +")" ;
+			detailsIdCriteria = "panel_details_id in (" + (detailsIdCriteria.equals("")?null:detailsIdCriteria) +")";
+			sql = sql + " and ("+ groupNameCriteria + " or " + detailsIdCriteria + ")";
+			//Query query = sessionFactory.getCurrentSession().createQuery(sql);
+			SQLQuery  query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+			query.executeUpdate();
+			
+			result=true;
+		}
+		
+		
+		
+		 
+		
+		
+		return result;
+	}
+	
+	
 
 }

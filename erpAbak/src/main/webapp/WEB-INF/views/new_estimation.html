@@ -1,19 +1,4 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<title>ERP</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Custom CSS -->
-	<link href="css/style.css" rel='stylesheet' type='text/css' />
- 	<script src='js/jquery-1.11.1.min.js'></script>
-	<script src='js/bootstrap.js' type='text/javascrip'> </script>
-	<script src="js/SidebarNav.min.js" type="text/javascript"></script>
-</head> 
-
-<body>
+ <link href="css/style.css" rel='stylesheet' type='text/css' />
 
 
 	<div class="main-content">
@@ -166,7 +151,8 @@
 		
 		<div id="project_mainbox3">
     	
-    	<table width="200" border="1" id="mainEstTbl">
+    	<table class="display"  border="1" id="mainEstTbl">
+		  <thead>
 		  <tr>
 		    <th scope="col">Sr no.</th>
 		    <th scope="col">Description</th>
@@ -178,18 +164,26 @@
 		    <th scope="col">Depth</th>
 		    <th scope="col">Details</th>
 		    <th scope="col">Spec</th>
+		    <th></th>
 		  </tr>
+		  </thead>
+		  <tbody>
+		  </tbody>
  		</table>
- 
-	<div id="tempEstimationPopUp">
 
+
+
+	<div id="tempEstimationSpecPopUp">
+	</div>
+	<div id="tempEstimationPopUp">
 	</div>
  
 	</div>
 	</div> <!--project_mainbox3-->
 	</div>  <!--page-wrapper-->
 
-	
-	
-</body>
-</html>
+ 		<script>
+		$(document).ready(function() {
+			$('#mainEstTbl').DataTable();
+		} );
+		</script>

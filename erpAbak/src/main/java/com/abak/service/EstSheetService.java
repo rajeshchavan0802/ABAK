@@ -144,5 +144,23 @@ public class EstSheetService{
 	
 	
 	
+	@Transactional
+	  public boolean deleteFromPanelDetails(Integer panelId, String panalDetailsDelIDs,String panalDetailsDelGroups) {
+		  boolean result = false;
+		  String[] panalDetailsDelIDsArray = ( panalDetailsDelIDs!=null) ?  panalDetailsDelIDs.split(",") : null;
+		  String[] panalDetailsDelGroupsArray = panalDetailsDelGroups!=null? panalDetailsDelGroups.split(",") : null;
+		  Integer[] detailsIds = new Integer[panalDetailsDelIDsArray!=null?panalDetailsDelIDsArray.length : 0];
+		  
+		  if(panalDetailsDelIDsArray!=null)
+		  for(int i =0 ;  i < panalDetailsDelIDsArray.length ; i++) {
+			  detailsIds[i] = new Integer(panalDetailsDelIDsArray[i]);
+		  }
+		  
+		  result = iEstSheetDao.deleteFromPanelDetails(panelId, detailsIds, panalDetailsDelGroupsArray);
+		  
+		  return result;
+	  }
+	
+	
 	
 }
