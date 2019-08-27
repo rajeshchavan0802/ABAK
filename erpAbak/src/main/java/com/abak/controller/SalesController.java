@@ -146,7 +146,4 @@ public class SalesController {
 		return modelAndView;
 	}
 	
-	
-	
-	
 }

@@ -49,6 +49,7 @@ public class EstSheetService{
 				panel.setPanelId(null);
 			}
 			
+			panel.setTotalPanelCost();
 			panelList.add(panel);
 		}
 		
@@ -57,7 +58,7 @@ public class EstSheetService{
 		}
 		
 		sessionProject.setPanels(panelList);
-		
+		sessionProject.setTotalCostActual();
 		return sessionProject;
 	}
 	

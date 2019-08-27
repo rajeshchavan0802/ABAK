@@ -181,7 +181,7 @@
    			<td id="defth${list.panelId}">${(list.defth)!""}</td>
    	        <td><img src='images/tick.png' height='35' width='30'onclick="getPanelDetails(${list.panelId},'w')"></td>
    	    	<td><img src='images/tick.png' height='35' width='30' onclick="getPanelSpecDetails(${list.panelId})" ></td>
-   	    	<td><i class="fa fa-trash fa-4" ></i></td>
+   	    	<td><i class="fa fa-trash fa-4"  onclick="getPanelDelete(this,${list.panelId})" ></i></td>
    	      </tr>
 		  </#list>
 		  </tbody>
@@ -205,6 +205,7 @@
 		$(document).ready(function() {
 			$('#mainEstTbl').DataTable();
 		} );
+		
 		</script>
 
 

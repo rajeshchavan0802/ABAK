@@ -160,6 +160,15 @@ public class Project implements Cloneable {
 	public void setTotalCostActual(Double totalCostActual) {
 		this.totalCostActual = totalCostActual;
 	}
+	
+	public void setTotalCostActual() {
+		Double totalCostActual= 0D;
+		for(Panel panel : panels) {
+			totalCostActual += panel.getTotalPanelCost();
+		}
+		this.totalCostActual = totalCostActual;
+	}
+	
 
 	@Column(name = "quetation_cost", precision = 22, scale = 0)
 	public Double getQuetationCost() {
