@@ -1,0 +1,151 @@
+
+
+	<body>
+	<div class="main-content">
+	<div id="header"></div>
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="header_bottom">
+			<h2>Supplier Master</h2>
+			<div class="text-right">
+			<ol class="breadcrumbs">
+				<li>
+					<a href="#">
+						<span>Home&nbsp; / </span>
+					</a>
+				</li>
+				<li><span>&nbsp;Supplier Master</span></li>
+			</ol>
+		</div>
+		</div>
+		
+<div id="project_mainbox1">
+<form id="myForm" action="" method="post">
+    <div class="project_box">
+    	<div class="project_box2"><h2>Supplier Name</h2> </div>
+        <div class="project_box3"><input type="text" name="supplierName"/></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Contatct Number</h2> </div>
+        <div class="project_box3"><input type="text" name="contatctNumber"/></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Email</h2> </div>
+        <div class="project_box3"><input type="text" name="emailId"/></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>GST Number</h2> </div>
+        <div class="project_box3"><input type="text" name="gstNumber"/></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Payment Term</h2> </div>
+        <div class="project_box3"><input type="text" name="paymentTerm"/></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Payment Mode</h2> </div>
+        <div class="project_box3"><select name="paymentMode">
+		  <option selected="true" disabled="disabled">Select</option>
+		  <option value="Cash">Cash</option>
+		  <option value="Bank Transfer">Bank Transfer</option>
+	 	</select></div>
+    </div>
+    <div class="project_box">
+    	<div class="project_box2"><h2>Kind Attn</h2> </div>
+        <div class="project_box3"><input type="text" name="knidAttn"/></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Document</h2> </div>
+        <div class="project_box3"><input type="text" name="document"/></div>
+    </div>
+    <div class="project_box">
+    	<div class="project_box2"><h2>Address</h2> </div>
+        <div class="project_box3"><input type="text" name="address"/></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Bank Name</h2> </div>
+        <div class="project_box3"><input type="text" name="bankName"/></div>
+    </div>
+    <div class="project_box">
+    	<div class="project_box2"><h2>Ifsc Code</h2> </div>
+        <div class="project_box3"><input type="text" name="ifscCode"/></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Account Number</h2> </div>
+        <div class="project_box3"><input type="text" name="accountNumber"/></div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Status</h2> </div>
+        <div class="project_box3">
+        <select name="status">
+		  <option selected="true" disabled="disabled">Select</option>
+		  <option value="1">Active</option>
+		  <option value="0">Deactive</option>
+	 	</select>
+    </div>
+    
+    
+    <div class="table_box">
+		    	<table width="200" border="1" id="first_table">
+					<tr>
+						<th scope="col">Sr no.</th>
+						<th scope="col">Description</th>
+						<th scope="col"></th>
+					</tr>
+					<tr>
+					 	<td><input type="text" name="" size="27"></td>
+						<td><input type="text" name="supplierDetailses[0].makeDescription" size="27"></td>
+						<td><img src="images/plus.png" onclick="repeatrow('first_table')" height="35" width="35"></img>
+						<img src="images/minus.png" height="35" width="35" onclick="this.parentElement.parentElement.remove();"></img></td>
+					</tr>
+				</table>
+		</div>
+		<script>
+		function repeatrow(id){
+			
+			pdcount++;
+		console.log("#"+id);
+			element=""+
+			'<tr>'+
+			'<td><input type="text" name="" size="27"></td>'+
+			'<td><input type="text" name="supplierDetailses['+pdcount+'].makeDescription" size="27"></td>'+
+			
+				'<td><img src="images/plus.png" height="35" width="35" ></img>'+
+				'<img src="images/minus.png" height="35" width="35" onclick="this.parentElement.parentElement.remove();"></img></td>'+
+			'</tr>';
+			$("#"+id).append(element);
+		}
+    
+		</script>
+    
+        </div>
+    
+    <div class="project_box4">
+    <div class="button"> 
+    	 
+    	<input type="button" value="Apply" onclick="saveSupplieMasterData()">
+        <input type="button" value="Clear">
+     </div>
+    </div><!--project_box-->
+   </form> 
+</div><!--project_mainbox1-->
+    
+        
+    </div>  <!--page-wrapper-->
+<h1>ggg</h1>
+	
+	<form id="myForm" action="" method="post">
+	
+	</form>
+
+</div>
+
+

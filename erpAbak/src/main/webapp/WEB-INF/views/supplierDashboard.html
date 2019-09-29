@@ -1,0 +1,127 @@
+
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#salesOrderTbl').DataTable();
+	} );
+	
+	function veiwProjectInfo(projectId){
+	
+		var data = 'projectId='+ projectId;
+    	var resData = doAjaxCall('?viewSalesOrderInfo', 'post', data, false, 'json');
+    	var res = JSON.parse(resData); 
+
+    	$('#projectName').val(res.projectName);
+    	$('#enquiryNumber').val(res.enquiryNumber);
+    	$('#revision').val(res.revision);
+        $('#enquiryRecDate').val(res.enquiryRecDate);
+        $('#quetationSendDate').val(res.quetationSendDate);
+        $('#typesofPanne').val(res.typesofPanne);
+        $('#jobNumber').val(res.jobNumber);
+        $('#drawingAprvDate').val(res.drawingAprvDate);
+        $('#quntity').val(res.quntity);
+        $('#enquiryType').val(res.enquiryType);
+        $('#estimator').val(res.estimator);
+        $('#draftman').val(res.draftman);
+        $('#schemaDesigner').val(res.schemaDesigner);
+	}
+	</script>
+    
+
+<body>
+	<div class="main-content">
+	<div id="header"></div>
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="header_bottom">
+			<h2>View Pending Orders</h2>
+			<div class="text-right">
+			<ol class="breadcrumbs">
+				<li>
+					<a href="#">
+						<span>Home&nbsp; / </span>
+					</a>
+				</li>
+				<li><span>&nbsp;View Pending Orders</span></li>
+			</ol>
+		</div>
+		</div>
+		
+<div id="project_mainbox1">
+	<div class="project_box">
+    	<div class="project_box2"><h2>Supplier Name</h2> </div>
+        <div class="project_box3">
+			<select>
+	   		<option value="Estimator 1">Estimator 1</option>
+			<option value="Estimator 2">Estimator 2</option>
+	  		</select>
+		</div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2">
+        <h2>Status</h2> </div>
+        <div class="project_box3">
+       <select>
+	   <option value="Handle By 1">Handle By 1</option>
+		<option value="Handle By 2">Handle By 2</option>
+	   </select>
+        </div>
+    </div>
+    
+    
+    <div class="project_box4">
+    <div class="button"> 
+    	<input type="button" value="Apply">
+        <input type="button" value="Clear">
+     </div>
+    </div><!--project_box-->
+    
+</div><!--project_mainbox1-->
+    
+    
+    
+		<div id="project_mainbox3">
+    	<table   border="1" id="salesOrderTbl" class="display">
+    			 <thead>
+				  <tr>
+				    <th scope="col">Sr no.</th>
+				    <th scope="col">Supplier Name</th>
+				    <th scope="col">Contact No</th>
+				    <th scope="col">Email</th>
+				    <th scope="col">GST Number</th>
+				    <th scope="col">Payment Term</th>
+				    <th scope="col">Payment Mode</th>
+				    <th scope="col">Kind Attn</th>
+				    <th scope="col">Address</th>
+				    <th scope="col">Status</th>
+				    <th scope="col">View</th>
+				  </tr>
+				  </thead>
+				 <tbody>
+  				<#if listProject??>
+	        	<#list listProject as project>
+  					<tr>
+    				<td>${project?index+1}</td>
+	                <td>${(project.projectName)!""}</td>
+	                <td>${(project.handledByName)!""}</td>
+	                <td>${(project.estimatorUserName)!""}</td>
+	                <td>${(project.schemaDesignerName)!""}</td>
+	                <td>${(project.draftmanName)!""}</td>
+	                <td>${(project.createdOn)!""}</td>
+	                <td></td>
+	                <td></td>
+	                <td>${(project.status)!""}</td>
+	                <td><button type="button" onclick="veiwProjectInfo(${project.projectId})">View</button> </td>
+	                </tr>
+  				</#list>
+	       		</#if>
+  			   </tbody>
+			</table>
+    	</div> <!--project_mainbox3-->
+    
+
+</div>
+		
+
+
