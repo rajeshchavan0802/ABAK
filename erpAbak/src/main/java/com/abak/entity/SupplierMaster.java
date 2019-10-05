@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,7 +40,7 @@ public class SupplierMaster implements java.io.Serializable {
 	private Integer accountNumber;
 	private String bankName;
 	private String ifscCode;
-	private Boolean status;
+	private Integer status;
 	private List<SupplierDetails> supplierDetailses = new ArrayList<SupplierDetails>(0);
 
 	
@@ -46,6 +48,7 @@ public class SupplierMaster implements java.io.Serializable {
 	
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "supplier_number", unique = true, nullable = false)
 	public int getSupplierNumber() {
 		return this.supplierNumber;
@@ -173,11 +176,11 @@ public class SupplierMaster implements java.io.Serializable {
 	}
 
 	@Column(name = "status")
-	public Boolean getStatus() {
+	public Integer getStatus() {
 		return this.status;
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	

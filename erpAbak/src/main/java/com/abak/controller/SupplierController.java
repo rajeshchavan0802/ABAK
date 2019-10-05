@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.abak.dao.SupplierMasterDao;
 import com.abak.entity.SupplierDetails;
 import com.abak.entity.SupplierMaster;
+import com.abak.model.ProjectInformation;
 import com.abak.service.SupplierMasterService;
 
 @Controller
@@ -25,11 +27,14 @@ public class SupplierController {
 	
 	@Autowired
 	private SupplierMasterService supplierMasterService;
-	
+	@Autowired
+	private SupplierMasterDao supplierMasterDao;
 	
 	@RequestMapping(params="index",method={RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView getSupplierIndexPage() {
 		ModelAndView modelAndView = new ModelAndView("supplierMaster");
+		SupplierMaster supplierMaster = null;
+		modelAndView.addObject("supplierMaster",supplierMaster);
 		return modelAndView;
 	}
 	
@@ -38,9 +43,6 @@ public class SupplierController {
 	public String saveSupplierMasters(@ModelAttribute SupplierMaster supplierMaster,
 			HttpServletRequest request,HttpServletResponse response,BindingResult bindingResult) {
 		System.out.println("This is the entry of supplier ");
-		//SupplierDetails supplierDetails = new SupplierDetails();
-		//supplierDetails.setMakeDescription(makeDescription);
-		//supplierDetailsEntity.setSupplierNumber(1);
 		supplierMasterService.saveSupplierMaster(supplierMaster);
 		return "ok";
 	}
@@ -53,5 +55,25 @@ public class SupplierController {
 		return modelAndView;
 	}
 	
-	
+	@RequestMapping(params="viewSupplierInfo", method={RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView viewSupInfo(@RequestParam Integer supplierNumber,@RequestParam Integer requestType ,HttpServletRequest request) {
+		ModelAndView modelAndView = null;
+		if(requestType ==1){
+			modelAndView = new ModelAndView("supplierMasterReadOnly");
+			SupplierMaster supplierMaster = supplierMasterService.getSupplierDataInfo(supplierNumber);
+			modelAndView.addObject("supplierMaster",supplierMaster);
+		}else if(requestType ==2){
+			modelAndView = new ModelAndView("supplierMaster");
+			SupplierMaster supplierMaster = supplierMasterService.getSupplierDataInfo(supplierNumber);
+			//supplierMasterService.saveSupplierMaster(supplierMaster);
+			modelAndView.addObject("supplierMaster",supplierMaster);
+		}else{
+			modelAndView = new ModelAndView("supplierDashboard");
+			int res = supplierMasterDao.deleteSupllierData(supplierNumber);
+			List<SupplierMaster> listSupplier = supplierMasterService.getAllSupplier();
+			modelAndView.addObject("listSupplier",listSupplier);			
+		}
+		return modelAndView;
+	}
+
 }

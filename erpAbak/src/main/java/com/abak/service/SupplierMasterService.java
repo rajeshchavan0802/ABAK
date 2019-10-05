@@ -16,6 +16,7 @@ public class SupplierMasterService {
 	@Autowired
 	private SupplierMasterDao supplierMasterDao;
 	
+	@Transactional
 	public void saveSupplierMaster(SupplierMaster supplierMasterEntity ){
 		for(SupplierDetails temp : supplierMasterEntity.getSupplierDetailses()){
 			temp.setSupplierMaster(supplierMasterEntity);
@@ -27,6 +28,12 @@ public class SupplierMasterService {
 	@Transactional
 	public List<SupplierMaster> getAllSupplier() {
 		return supplierMasterDao.getAllSupplierlist();
+		
+	}
+	
+	@Transactional
+	public SupplierMaster getSupplierDataInfo(Integer supplierNumber) {
+		return supplierMasterDao.getAllSupplierData(supplierNumber);
 		
 	}
 }

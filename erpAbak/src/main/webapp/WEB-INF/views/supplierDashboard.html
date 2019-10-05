@@ -34,7 +34,7 @@
 		<!-- main content start-->
 		<div id="page-wrapper">
 			<div class="header_bottom">
-			<h2>View Pending Orders</h2>
+			<h2>Supplier Dashboard</h2>
 			<div class="text-right">
 			<ol class="breadcrumbs">
 				<li>
@@ -42,7 +42,7 @@
 						<span>Home&nbsp; / </span>
 					</a>
 				</li>
-				<li><span>&nbsp;View Pending Orders</span></li>
+				<li><span>&nbsp;Supplier Dashboard</span></li>
 			</ol>
 		</div>
 		</div>
@@ -96,23 +96,27 @@
 				    <th scope="col">Address</th>
 				    <th scope="col">Status</th>
 				    <th scope="col">View</th>
+				    <th scope="col">Edit</th>
+				    <th scope="col">Delete</th>
 				  </tr>
 				  </thead>
 				 <tbody>
-  				<#if listProject??>
-	        	<#list listProject as project>
+  				<#if listSupplier??>
+	        	<#list listSupplier as supplier>
   					<tr>
-    				<td>${project?index+1}</td>
-	                <td>${(project.projectName)!""}</td>
-	                <td>${(project.handledByName)!""}</td>
-	                <td>${(project.estimatorUserName)!""}</td>
-	                <td>${(project.schemaDesignerName)!""}</td>
-	                <td>${(project.draftmanName)!""}</td>
-	                <td>${(project.createdOn)!""}</td>
+    				<td>${supplier.supplierNumber}</td>
+	                <td>${(supplier.supplierName)!""}</td>
+	                <td>${(supplier.handledByName)!""}</td>
+	                <td>${(supplier.estimatorUserName)!""}</td>
+	                <td>${(supplier.schemaDesignerName)!""}</td>
+	                <td>${(supplier.draftmanName)!""}</td>
+	                <td>${(supplier.createdOn)!""}</td>
 	                <td></td>
 	                <td></td>
-	                <td>${(project.status)!""}</td>
-	                <td><button type="button" onclick="veiwProjectInfo(${project.projectId})">View</button> </td>
+	                <td></td>
+	                <td><button type="button" onclick="viewSupplierData(${supplier.supplierNumber})">View</button> </td>
+	                <td><button type="button" onclick="editSupplierData(${supplier.supplierNumber})">Edit</button> </td>
+	                <td><button type="button" onclick="deleteSupplierData(${supplier.supplierNumber})">Delete</button> </td>
 	                </tr>
   				</#list>
 	       		</#if>

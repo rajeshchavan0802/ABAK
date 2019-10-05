@@ -1,0 +1,210 @@
+
+
+	<body>
+	<div class="main-content">
+	<div id="header"></div>
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="header_bottom">
+			<h2>Supplier Master Read</h2>
+			<div class="text-right">
+			<ol class="breadcrumbs">
+				<li>
+					<a href="#">
+						<span>Home&nbsp; / </span>
+					</a>
+				</li>
+				<li><span>&nbsp;Supplier Master Read</span></li>
+			</ol>
+		</div>
+		</div>
+		
+<div id="project_mainbox1">
+<form id="myForm" action="" method="post">
+    <div class="project_box">
+    	<div class="project_box2"><h2>Supplier Name</h2> </div>
+    	<#if supplierMaster.supplierName?has_content>
+    		<div class="project_box3"><input type="text" name="supplierName" value="${supplierMaster.supplierName}" disabled="disabled"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="supplierName" value="" disabled="disabled"/></div>
+	 	 </#if>
+        
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Contact Number</h2> </div>
+    	<#if supplierMaster.contactNumber?has_content>
+    		<div class="project_box3"><input type="text" name="contactNumber" value="${supplierMaster.contactNumber}" disabled="disabled"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="contactNumber" value="" disabled="disabled"/></div>
+	  </#if>
+        
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Email</h2> </div>
+    	<#if supplierMaster.emailId?has_content>
+    		<div class="project_box3"><input type="text" name="emailId" value="${supplierMaster.emailId}" disabled="disabled"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="emailId" value="" disabled="disabled"/></div>
+	  </#if>
+        
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>GST Number</h2> </div>
+    	<#if supplierMaster.gstNumber?has_content>
+    		<div class="project_box3"><input type="text" name="gstNumber" value="${supplierMaster.gstNumber}" disabled="disabled"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="gstNumber" value="" disabled="disabled"/></div>
+	  	</#if>
+        
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Payment Term</h2> </div>
+        
+        
+        <#if supplierMaster.paymentTerm?has_content>
+    		<div class="project_box3"><input type="text" name="paymentTerm" value="${supplierMaster.paymentTerm}" disabled="disabled"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="paymentTerm" value="" disabled="disabled"/></div>
+	  	</#if>
+        
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Payment Mode</h2> </div>
+        <div class="project_box3">
+        <#if supplierMaster.paymentMode?has_content && supplierMaster.paymentMode="Cash">
+        	<input type="text" name="paymentMode" value="Cash" disabled="disabled"/>
+    	<#elseif  supplierMaster.paymentMode?has_content && supplierMaster.paymentMode="Bank Transfer">
+			<input type="text" name="paymentMode" value="Bank Transfer" disabled="disabled"/>
+		<#else>
+			<input type="text" name="paymentMode" value="" disabled="disabled"/>
+	  	</#if>
+        </div>
+    </div>
+    <div class="project_box">
+    	<div class="project_box2"><h2>Kind Attn</h2> </div>
+        
+        <#if supplierMaster.kindAttn?has_content>
+    		<div class="project_box3"><input type="text" name="kindAttn" value="${supplierMaster.kindAttn}" disabled="disabled"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="kindAttn" value="" disabled="disabled"/></div>
+	  	</#if>
+        
+        
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Document</h2> </div>
+        
+        <#if supplierMaster.document?has_content>
+    		<div class="project_box3"><input type="text" name="document" value="${supplierMaster.document}" disabled="disabled"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="document" value="" disabled="disabled"/></div>
+	  	</#if>
+        
+    </div>
+    <div class="project_box">
+    	<div class="project_box2"><h2>Address</h2> </div>
+        
+        <#if supplierMaster.address?has_content>
+    		<div class="project_box3"><input type="text" name="address" value="${supplierMaster.address}" disabled="disabled"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="address" value="" disabled="disabled"/></div>
+	  	</#if>
+        
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Bank Name</h2> </div>
+        
+        <#if supplierMaster.bankName?has_content>
+    		<div class="project_box3"><input type="text" name="bankName" value="${supplierMaster.bankName}" disabled="disabled"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="bankName" value="" disabled="disabled"/></div>
+	  	</#if>
+        
+    </div>
+    <div class="project_box">
+    	<div class="project_box2"><h2>Ifsc Code</h2> </div>
+        
+        <#if supplierMaster.ifscCode?has_content>
+    		<div class="project_box3"><input type="text" name="ifscCode" value="${supplierMaster.ifscCode}" disabled="disabled"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="ifscCode" value="" disabled="disabled"/></div>
+	  	</#if>
+        
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Account Number</h2> </div>
+        <div class="project_box3">
+        <#if supplierMaster.accountNumber?has_content>
+    		<input type="text" name="accountNumber" value="${supplierMaster.accountNumber}" disabled="disabled"/>
+    	<#else>
+			<input type="text" name="accountNumber" value="" disabled="disabled"/>
+	  	</#if>
+        </div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Status</h2> </div>
+        <div class="project_box3">
+        <#if supplierMaster.status?has_content >
+        	<#if supplierMaster.status=1>
+        		<input type="text" name="status" value="Active" disabled="disabled"/>
+        	<#else>
+        		<input type="text" name="status" value="Deactive" disabled="disabled"/>
+        	</#if>	
+        <#else>
+			<input type="text" name="status" value="" disabled="disabled"/>
+	  	</#if>
+	  	
+	  	</div>
+        
+    </div>
+    
+    
+    <div class="table_box">
+    <#list supplierMaster.supplierDetailses as item>
+    			<#if item?has_content && item.makeDescription?has_content>
+				${item.makeDescription}
+				</#if> 
+			</#list>
+				
+		    	<table width="200" border="1" id="first_table">
+					<tr>
+						<th scope="col">Sr no.</th>
+						<th scope="col">Description</th>
+						<th scope="col"></th>
+					</tr>
+					<#assign x = 0>
+					<#list supplierMaster.supplierDetailses as item>
+					<#assign x++>
+					<tr>
+						<td><input type="text" name="" value="${x}" size="27" disabled="disabled"></td>
+						<#if item?has_content && item.makeDescription?has_content>
+    					<td><input type="text" name="" value="${item.makeDescription}" size="27" disabled="disabled"></td>
+						</#if> 
+					</tr>
+					</#list>
+					
+					 	
+					
+				</table>
+		</div>
+		
+    
+        </div>
+   </form> 
+</div><!--project_mainbox1-->
+    
+        
+    </div>  <!--page-wrapper-->
+
+</div>
+
+
