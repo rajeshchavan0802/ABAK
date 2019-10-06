@@ -1,0 +1,219 @@
+
+
+	<body>
+	<div class="main-content">
+	<div id="header"></div>
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="header_bottom">
+			<h2>Supplier Master</h2>
+			<div class="text-right">
+			<ol class="breadcrumbs">
+				<li>
+					<a href="#">
+						<span>Home&nbsp; / </span>
+					</a>
+				</li>
+				<li><span>&nbsp;Supplier Master</span></li>
+			</ol>
+		</div>
+		</div>
+		
+<div id="project_mainbox1">
+<form id="myForm" action="" method="post">
+    <div class="project_box">
+    	<div class="project_box2"><h2>Supplier Name</h2> </div>
+    	<#if supplierMaster?has_content &&  supplierMaster.supplierNumber?has_content>
+    		<div class="project_box3"><input type="hidden" name="supplierNumber" value="${supplierMaster.supplierNumber}" /></div>
+    	</#if>
+    	<#if supplierMaster?has_content &&  supplierMaster.supplierName?has_content>
+    		<div class="project_box3"><input type="text" name="supplierName" value="${supplierMaster.supplierName}" /></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="supplierName" value=""/></div>
+	 	 </#if>
+        
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Contatct Number</h2> </div>
+    	<#if supplierMaster?has_content && supplierMaster.contactNumber?has_content>
+    		<div class="project_box3"><input type="text" name="contactNumber" value="${supplierMaster.contactNumber}" /></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="contactNumber" value="" /></div>
+	  </#if>
+        
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Email</h2> </div>
+        <#if supplierMaster?has_content && supplierMaster.emailId?has_content>
+    		<div class="project_box3"><input type="text" name="emailId" value="${supplierMaster.emailId}" /></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="emailId" value="" /></div>
+	  </#if>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>GST Number</h2> </div>
+        <#if supplierMaster?has_content && supplierMaster.gstNumber?has_content>
+    		<div class="project_box3"><input type="text" name="gstNumber" value="${supplierMaster.gstNumber}"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="gstNumber" value=""/></div>
+	  	</#if>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Payment Term</h2> </div>
+        <#if supplierMaster?has_content && supplierMaster.paymentTerm?has_content>
+    		<div class="project_box3"><input type="text" name="paymentTerm" value="${supplierMaster.paymentTerm}"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="paymentTerm" value="" /></div>
+	  	</#if>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Payment Mode</h2> </div>
+        <div class="project_box3"><select name="paymentMode">
+		  <option selected="true" disabled="disabled">Select</option>
+		  <#if supplierMaster?has_content && supplierMaster.paymentMode?has_content && supplierMaster.paymentMode="Cash">
+				<option value="Cash" selected>Cash</option>
+			<#else>
+			<option value="Cash">Cash</option>
+	  		</#if>
+	  		<#if supplierMaster?has_content && supplierMaster.paymentMode?has_content && supplierMaster.paymentMode="Bank Transfer">
+				<option value="Bank Transfer" selected>Bank Transfer</option>
+			<#else>
+			<option value="Bank Transfer">Bank Transfer</option>
+	  		</#if>
+		  
+	 	</select></div>
+    </div>
+    <div class="project_box">
+    	<div class="project_box2"><h2>Kind Attn</h2> </div>
+        <#if supplierMaster?has_content && supplierMaster.kindAttn?has_content>
+    		<div class="project_box3"><input type="text" name="kindAttn" value="${supplierMaster.kindAttn}"/></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="kindAttn" value=""/></div>
+	  	</#if>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Document</h2> </div>
+        <#if supplierMaster?has_content && supplierMaster.document?has_content>
+    		<div class="project_box3"><input type="text" name="document" value="${supplierMaster.document}" /></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="document" value="" /></div>
+	  	</#if>
+    </div>
+    <div class="project_box">
+    	<div class="project_box2"><h2>Address</h2> </div>
+        <#if supplierMaster?has_content && supplierMaster.address?has_content>
+    		<div class="project_box3"><input type="text" name="address" value="${supplierMaster.address}" /></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="address" value="" /></div>
+	  	</#if>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Bank Name</h2> </div>
+        <#if supplierMaster?has_content && supplierMaster.bankName?has_content>
+    		<div class="project_box3"><input type="text" name="bankName" value="${supplierMaster.bankName}" /></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="bankName" value=""/></div>
+	  	</#if>
+    </div>
+    <div class="project_box">
+    	<div class="project_box2"><h2>Ifsc Code</h2> </div>
+        <#if supplierMaster?has_content && supplierMaster.ifscCode?has_content>
+    		<div class="project_box3"><input type="text" name="ifscCode" value="${supplierMaster.ifscCode}" /></div>
+    	<#else>
+			<div class="project_box3"><input type="text" name="ifscCode" value=""/></div>
+	  	</#if>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Account Number</h2> </div>
+        <div class="project_box3">
+        <#if supplierMaster?has_content && supplierMaster.accountNumber?has_content>
+    		<input type="text" name="accountNumber" value="${supplierMaster.accountNumber}" />
+    	<#else>
+			<input type="text" name="accountNumber" value=""/>
+	  	</#if>
+        </div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2"><h2>Status</h2> </div>
+        <div class="project_box3">
+        
+        <select name="status">
+		  <option selected="true" disabled="disabled">Select</option>
+		  	<#if supplierMaster?has_content && supplierMaster.status?has_content && supplierMaster.status=1>
+				<option value="1" selected>Active</option>
+			<#else>
+			<option value="1">Active</option>
+	  		</#if>
+	  		<#if supplierMaster?has_content && supplierMaster.status?has_content && supplierMaster.status=0>
+				<option value="0" selected>Deactive</option>
+			<#else>
+			<option value="0">Deactive</option>
+	  		</#if>
+	 	</select>
+    </div>
+    
+    
+    <div class="table_box">
+		    	<table width="200" border="1" id="first_table">
+					<tr>
+						<th scope="col">Sr no.</th>
+						<th scope="col">Description</th>
+						<th scope="col"></th>
+					</tr>
+					<#if supplierMaster?has_content>
+					<#if supplierMaster.supplierDetailses?has_content>
+						<#assign x = 0>
+						<#list supplierMaster.supplierDetailses as item>
+						<#assign x++>
+							<tr>
+						 	<td><input type="text" name="" size="27"></td>
+							<td><input type="text" name="supplierDetailses[${x}].id" value="${item.id}">
+							<input type="text" name="supplierDetailses[${x}].makeDescription" value="${item.makeDescription}" size="27"></td>
+							<td><img src="images/plus.png" onclick="repeatrow('first_table')" height="35" width="35"></img>
+							<img src="images/minus.png" height="35" width="35" onclick="this.parentElement.parentElement.remove();"></img></td>
+						</tr>
+						</#list>
+					</#if>
+					<#else>
+						<tr>
+					 	<td><input type="text" name="" size="27"></td>
+						<td><input type="text" name="supplierDetailses[0].makeDescription" size="27"></td>
+						<td><img src="images/plus.png" onclick="repeatrow('first_table')" height="35" width="35"></img>
+						<img src="images/minus.png" height="35" width="35" onclick="this.parentElement.parentElement.remove();"></img></td>
+					</tr>
+					</#if>
+					
+				</table>
+		</div>
+		<script>
+		
+    
+		</script>
+    
+        </div>
+    
+    <div class="project_box4">
+    <div class="button"> 
+    	 
+    	<input type="button" value="Apply" onclick="saveSupplieMasterData()">
+        <input type="button" value="Clear">
+     </div>
+    </div><!--project_box-->
+   </form> 
+</div><!--project_mainbox1-->
+    
+        
+    </div>  <!--page-wrapper-->
+
+</div>
+
+

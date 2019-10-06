@@ -1,0 +1,131 @@
+
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#salesOrderTbl').DataTable();
+	} );
+	
+	function veiwProjectInfo(projectId){
+	
+		var data = 'projectId='+ projectId;
+    	var resData = doAjaxCall('?viewSalesOrderInfo', 'post', data, false, 'json');
+    	var res = JSON.parse(resData); 
+
+    	$('#projectName').val(res.projectName);
+    	$('#enquiryNumber').val(res.enquiryNumber);
+    	$('#revision').val(res.revision);
+        $('#enquiryRecDate').val(res.enquiryRecDate);
+        $('#quetationSendDate').val(res.quetationSendDate);
+        $('#typesofPanne').val(res.typesofPanne);
+        $('#jobNumber').val(res.jobNumber);
+        $('#drawingAprvDate').val(res.drawingAprvDate);
+        $('#quntity').val(res.quntity);
+        $('#enquiryType').val(res.enquiryType);
+        $('#estimator').val(res.estimator);
+        $('#draftman').val(res.draftman);
+        $('#schemaDesigner').val(res.schemaDesigner);
+	}
+	</script>
+    
+
+<body>
+	<div class="main-content">
+	<div id="header"></div>
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="header_bottom">
+			<h2>Supplier Dashboard</h2>
+			<div class="text-right">
+			<ol class="breadcrumbs">
+				<li>
+					<a href="#">
+						<span>Home&nbsp; / </span>
+					</a>
+				</li>
+				<li><span>&nbsp;Supplier Dashboard</span></li>
+			</ol>
+		</div>
+		</div>
+		
+<div id="project_mainbox1">
+	<div class="project_box">
+    	<div class="project_box2"><h2>Supplier Name</h2> </div>
+        <div class="project_box3">
+			<select>
+	   		<option value="Estimator 1">Estimator 1</option>
+			<option value="Estimator 2">Estimator 2</option>
+	  		</select>
+		</div>
+    </div>
+    
+    <div class="project_box">
+    	<div class="project_box2">
+        <h2>Status</h2> </div>
+        <div class="project_box3">
+       <select>
+	   <option value="Handle By 1">Handle By 1</option>
+		<option value="Handle By 2">Handle By 2</option>
+	   </select>
+        </div>
+    </div>
+    
+    
+    <div class="project_box4">
+    <div class="button"> 
+    	<input type="button" value="Apply">
+        <input type="button" value="Clear">
+     </div>
+    </div><!--project_box-->
+    
+</div><!--project_mainbox1-->
+    
+    
+    
+		<div id="project_mainbox3">
+    	<table   border="1" id="salesOrderTbl" class="display">
+    			 <thead>
+				  <tr>
+				    <th scope="col">Sr no.</th>
+				    <th scope="col">Supplier Name</th>
+				    <th scope="col">Contact No</th>
+				    <th scope="col">Email</th>
+				    <th scope="col">GST Number</th>
+				    <th scope="col">Payment Term</th>
+				    <th scope="col">Payment Mode</th>
+				    <th scope="col">Kind Attn</th>
+				    <th scope="col">Address</th>
+				    <th scope="col">Status</th>
+				    <th scope="col">View</th>
+				    <th scope="col">Edit</th>
+				    <th scope="col">Delete</th>
+				  </tr>
+				  </thead>
+				 <tbody>
+  				<#if listSupplier??>
+	        	<#list listSupplier as supplier>
+  					<tr>
+    				<td>${supplier.supplierNumber}</td>
+	                <td>${(supplier.supplierName)!""}</td>
+	                <td>${(supplier.handledByName)!""}</td>
+	                <td>${(supplier.estimatorUserName)!""}</td>
+	                <td>${(supplier.schemaDesignerName)!""}</td>
+	                <td>${(supplier.draftmanName)!""}</td>
+	                <td>${(supplier.createdOn)!""}</td>
+	                <td></td>
+	                <td></td>
+	                <td></td>
+	                <td><button type="button" onclick="viewSupplierData(${supplier.supplierNumber})">View</button> </td>
+	                <td><button type="button" onclick="editSupplierData(${supplier.supplierNumber})">Edit</button> </td>
+	                <td><button type="button" onclick="deleteSupplierData(${supplier.supplierNumber})">Delete</button> </td>
+	                </tr>
+  				</#list>
+	       		</#if>
+  			   </tbody>
+			</table>
+    	</div> <!--project_mainbox3-->
+    
+
+</div>
+		
+
+

@@ -79,7 +79,9 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 				 	<beans:value>com.abak.entity.PanelAdditionalComponent</beans:value>
 				 	<beans:value>com.abak.entity.PanelDetails</beans:value>
 				 	<beans:value>com.abak.entity.PanelSpecification</beans:value>
-				 	<beans:value>com.abak.entity.Project</beans:value> 
+				 	<beans:value>com.abak.entity.Project</beans:value>
+				 	<beans:value>com.abak.entity.SupplierMaster</beans:value> 
+				 	<beans:value>com.abak.entity.SupplierDetails</beans:value>  
 	 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

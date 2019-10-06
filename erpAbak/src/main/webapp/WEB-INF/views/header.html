@@ -107,6 +107,22 @@
               <span>Quotation Generation</span>
               </a>
               </li>
+              
+              <li class="treeview">
+              <a  onclick="getpage('supplier?index')">
+              <i class="fa fa-angle-right text-red"></i> 
+              <span>Supplier Master</span>
+              </a>
+              </li>
+              
+              <li class="treeview">
+              <a  onclick="getpage('supplier?supplierDashboard')">
+              <i class="fa fa-angle-right text-red"></i> 
+              <span>Supplier Dashboard</span>
+              </a>
+              </li>
+              
+              
                            
 			 </ul>
 			 
@@ -135,16 +151,9 @@
 		<script type="text/javascript" src="js/common.js"></script>
 		<script type="text/javascript" src="js/sales.js"></script>
 		<script type="text/javascript" src="js/estimation.js"></script>
-		
+		<script type="text/javascript" src="js/supplier.js"></script>
 		<script>
-	 	
-		
-		
-				$(document).ready(function() {
-					getpage('sales?viewPendingSalesOrder');
-				} );
-				
-				
+	 
 				function getpage(page){
 					$("#formContent").empty();
 					var resData = doAjaxCall(page, 'post', '', false, 'application/json');
