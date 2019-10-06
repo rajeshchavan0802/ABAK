@@ -1,3 +1,5 @@
+var pdcount=0;
+
 function saveSupplieMasterData(){
     	alert("kuch to aaya");
     	var data = $("#myForm").serialize();

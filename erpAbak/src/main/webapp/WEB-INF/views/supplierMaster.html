@@ -173,7 +173,8 @@
 					<#if supplierMaster.supplierDetailses?has_content>
 						<#assign x = 0>
 						<#list supplierMaster.supplierDetailses as item>
-						<#assign x++>
+						
+								<#if item?has_content>
 							<tr>
 						 	<td><input type="text" name="" size="27"></td>
 							<td><input type="text" name="supplierDetailses[${x}].id" value="${item.id}">
@@ -181,6 +182,8 @@
 							<td><img src="images/plus.png" onclick="repeatrow('first_table')" height="35" width="35"></img>
 							<img src="images/minus.png" height="35" width="35" onclick="this.parentElement.parentElement.remove();"></img></td>
 						</tr>
+						<#assign x++>
+							</#if>
 						</#list>
 					</#if>
 					<#else>
