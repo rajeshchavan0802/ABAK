@@ -184,8 +184,8 @@ public class SupplierMaster implements java.io.Serializable {
 		this.status = status;
 	}
 	
-	//@Fetch(FetchMode.SUBSELECT)
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "supplierMaster", cascade = { CascadeType.ALL,CascadeType.PERSIST,CascadeType.MERGE })
+	@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "supplierMaster", cascade = {CascadeType.ALL})
 	public List<SupplierDetails> getSupplierDetailses() {
 		return this.supplierDetailses;
 	}

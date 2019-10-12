@@ -36,4 +36,10 @@ public class SupplierMasterService {
 		return supplierMasterDao.getAllSupplierData(supplierNumber);
 		
 	}
+	
+	@Transactional
+	public int deleteSupllierDataDetails(Integer supplierNumber){
+		return supplierMasterDao.deleteSupllierData(supplierNumber);
+		
+	}
 }

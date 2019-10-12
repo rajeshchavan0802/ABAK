@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.abak.dao.SupplierMasterDao;
-import com.abak.entity.SupplierDetails;
 import com.abak.entity.SupplierMaster;
-import com.abak.model.ProjectInformation;
 import com.abak.service.SupplierMasterService;
 
 @Controller
@@ -27,8 +24,6 @@ public class SupplierController {
 	
 	@Autowired
 	private SupplierMasterService supplierMasterService;
-	@Autowired
-	private SupplierMasterDao supplierMasterDao;
 	
 	@RequestMapping(params="index",method={RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView getSupplierIndexPage() {
@@ -69,7 +64,7 @@ public class SupplierController {
 			modelAndView.addObject("supplierMaster",supplierMaster);
 		}else{
 			modelAndView = new ModelAndView("supplierDashboard");
-			int res = supplierMasterDao.deleteSupllierData(supplierNumber);
+			int res = supplierMasterService.deleteSupllierDataDetails(supplierNumber);
 			List<SupplierMaster> listSupplier = supplierMasterService.getAllSupplier();
 			modelAndView.addObject("listSupplier",listSupplier);			
 		}
